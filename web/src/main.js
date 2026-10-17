@@ -1,6 +1,6 @@
 import './style.css';
-import * as pdfjs from 'pdfjs-dist';
-import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+import * as pdfjs from 'pdfjs-dist/legacy/build/pdf.mjs';
+import workerUrl from 'pdfjs-dist/legacy/build/pdf.worker.min.mjs?url';
 import { PDFDocument } from 'pdf-lib';
 import JSZip from 'jszip';
 import { Capacitor } from '@capacitor/core';
@@ -25,7 +25,10 @@ async function open(file) {
   await task(async () => {
     status('Abriendo documento…');
     const bytes = new Uint8Array(await file.arrayBuffer());
-    const loading = pdfjs.getDocument({ data: bytes.slice(), isEvalSupported: false });
+    const assets = new URL(import.meta.env.BASE_URL + 'pdfjs/', location.href).href;
+    const loading = pdfjs.getDocument({ data: bytes.slice(), isEvalSupported: false,
+      wasmUrl: assets + 'wasm/', cMapUrl: assets + 'cmaps/', cMapPacked: true,
+      standardFontDataUrl: assets + 'standard_fonts/' });
     let nextView;
     try {
       nextView = await loading.promise;

@@ -10,6 +10,7 @@ node_modules/
 web/public/ocr/*.wasm
 web/public/ocr/*.wasm.js
 web/public/ocr/worker.min.js
+web/public/pdfjs/
 *.p12
 *.jks
 .signing/

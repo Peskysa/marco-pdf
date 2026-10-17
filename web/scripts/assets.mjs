@@ -1,8 +1,12 @@
-import { mkdir, readdir, copyFile, readFile, writeFile, access } from 'node:fs/promises';
+import { mkdir, readdir, copyFile, readFile, writeFile, access, cp } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 const require = createRequire(import.meta.url);
+const pdfjs = path.dirname(require.resolve('pdfjs-dist/package.json'));
+for (const folder of ['wasm', 'cmaps', 'standard_fonts']) {
+  await cp(path.join(pdfjs, folder), new URL(`../public/pdfjs/${folder}`, import.meta.url), { recursive: true });
+}
 const dest = new URL('../public/ocr/', import.meta.url);
 await mkdir(dest, { recursive: true });
 const core = path.dirname(require.resolve('tesseract.js-core/package.json'));
