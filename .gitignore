@@ -6,3 +6,10 @@ dist/
 *.spec
 tessdata/*.traineddata
 test-output/
+node_modules/
+web/public/ocr/*.wasm
+web/public/ocr/*.wasm.js
+web/public/ocr/worker.min.js
+*.p12
+*.jks
+.signing/

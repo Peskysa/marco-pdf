@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173e40"><meta name="description" content="Lee, reconoce y divide tus PDF en tu dispositivo con Marco PDF.">
+  <title>Marco PDF</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header><a class="brand" href="#" aria-label="Marco PDF, inicio"><span class="logo">M<span>↗</span></span><span>Marco <b>PDF</b></span></a><span class="privacy"><i></i> Tus archivos se quedan contigo</span><label class="open primary">Abrir PDF<input id="file" type="file" accept="application/pdf,.pdf"></label></header>
+  <main>
+    <aside>
+      <p class="eyebrow">TU MESA DE TRABAJO</p><h1>El papeleo,<br>más fácil.</h1><p class="intro">Lee, reconoce el texto y divide tus documentos. Todo en un mismo lugar.</p>
+      <label for="range">Páginas que quieres usar</label><input id="range" placeholder="Todas las páginas" autocomplete="off"><small>Por ejemplo: 1-3, 5, 8-10</small>
+      <section><span class="section-number">01</span><h2>Dividir documento</h2><label for="mode">Crear archivos por</label><select id="mode"><option value="pages">Número de páginas</option><option value="size">Tamaño máximo (MB)</option></select><div class="inline"><input id="amount" type="number" value="1" min="1" step="1" aria-label="Cantidad"><span id="unit">páginas</span></div><button id="split" class="action" disabled>Dividir PDF <span>↗</span></button><small>El tamaño se comprueba archivo a archivo.<br>1 MB = 1.000.000 bytes.</small></section>
+      <section><span class="section-number">02</span><h2>Reconocer texto</h2><label for="language">Idioma del documento</label><select id="language"><option value="spa+eng">Español + inglés</option><option value="spa">Español</option><option value="eng">Inglés</option></select><button id="ocr" class="action" disabled>Crear PDF con OCR <span>✦</span></button><small>Convierte los escaneos en texto buscable. Las páginas que ya tienen texto se conservan.</small></section>
+      <details><summary>Antes de empezar</summary><p>Los originales no se modifican. Los documentos derivados no conservan firmas digitales ni marcadores. Si una página supera el límite de MB, tendrás que aumentarlo. El OCR puede tardar: revisa siempre el resultado. En Android, guarda o comparte el resultado desde el menú del sistema.</p></details>
+    </aside>
+    <div class="workspace">
+      <div class="document-bar"><div><span class="eyebrow">DOCUMENTO</span><strong id="filename">Tu próximo documento</strong></div><span id="details">Sin archivo abierto</span></div>
+      <div id="empty"><div class="paper"><span>PDF</span><i></i><i></i><i></i><div>✦</div></div><p class="eyebrow">MENOS PASOS, MÁS CLARIDAD</p><h2>Un espacio para tus PDF.</h2><p>Abre un documento para leerlo,<br>extraer sus páginas o reconocer el texto.</p><label class="open primary">Elegir un PDF<input id="file-empty" type="file" accept="application/pdf,.pdf"></label><small>También puedes arrastrar un archivo aquí.</small></div>
+      <div id="reader" hidden><nav aria-label="Controles del documento"><button id="prev" aria-label="Página anterior">←</button><label class="page-input"><input id="page" type="number" value="1" min="1" aria-label="Ir a página"><span id="total">/ 1</span></label><button id="next" aria-label="Página siguiente">→</button><span class="divider"></span><button id="minus" aria-label="Reducir zoom">−</button><span id="zoom">100%</span><button id="plus" aria-label="Ampliar zoom">+</button><button id="fit">Ajustar</button><button id="toggle-text">Ver texto</button></nav><div class="search"><input id="query" placeholder="Buscar en el documento" aria-label="Buscar texto"><button id="find">Buscar</button></div><div id="page-area"><canvas id="canvas"></canvas></div><pre id="text" hidden></pre></div>
+      <div id="results" hidden><h2>Listo para guardar</h2><div id="files"></div></div>
+      <footer><span id="status" role="status" aria-live="polite">Listo para empezar</span><span>MARCO PDF · 1.1</span></footer>
+    </div>
+  </main><script type="module" src="/src/main.js"></script>
+</body></html>

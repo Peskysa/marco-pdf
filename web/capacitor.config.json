@@ -1,0 +1,6 @@
+{
+  "appId": "io.github.peskysa.marcopdf",
+  "appName": "Marco PDF",
+  "webDir": "dist",
+  "android": { "allowMixedContent": false }
+}

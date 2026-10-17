@@ -1,0 +1,119 @@
+name: Compilar Marco PDF
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  desktop:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencias Linux
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y python3-tk xvfb libxft2
+      - run: python -m pip install -r requirements.txt pyinstaller==6.22.3
+      - name: Idiomas OCR
+        shell: python
+        run: |
+          import gzip, pathlib
+          folder = pathlib.Path('tessdata'); folder.mkdir(exist_ok=True)
+          for lang in ('spa', 'eng'):
+              (folder / f'{lang}.traineddata').write_bytes(gzip.decompress(pathlib.Path(f'web/public/ocr/{lang}.traineddata.gz').read_bytes()))
+      - run: python -m unittest -v
+      - name: Compilar Windows
+        if: runner.os == 'Windows'
+        run: |
+          python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata;tessdata" app.py
+          Copy-Item LICENSE,README.md -Destination 'dist/Marco PDF'
+          Compress-Archive -Path 'dist/Marco PDF' -DestinationPath dist/Marco-PDF-Windows-Portable.zip
+          & 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe' packaging/windows.iss
+      - name: Compilar Linux
+        if: runner.os == 'Linux'
+        run: |
+          python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata:tessdata" app.py
+          cp LICENSE README.md 'dist/Marco PDF/'
+          xvfb-run python -c 'from app import MarcoPDF; a=MarcoPDF(); a.update(); a.destroy()'
+          bash packaging/linux.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ runner.os }}
+          path: |
+            dist/*.zip
+            dist/*.exe
+            dist/*.deb
+            dist/*.tar.gz
+          if-no-files-found: error
+  web-android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '11.25.0'
+          run_install: false
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm build
+      - name: Pruebas de navegador
+        env:
+          BROWSER_CHANNEL: chromium
+        run: |
+          pnpm exec playwright install --with-deps chromium
+          pnpm exec vite preview --host 127.0.0.1 --port 5173 &
+          for i in $(seq 1 20); do curl -s http://127.0.0.1:5173/ >/dev/null && break; sleep 1; done
+          pnpm run test:browser
+      - name: Empaquetar web
+        run: cd dist && zip -r ../../Marco-PDF-Web.zip .
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - name: Compilar APK firmado
+        env:
+          ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          pnpm exec cap sync android
+          echo "$ANDROID_KEYSTORE" | base64 --decode > android/app/marco-pdf.p12
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon
+          cp app/build/outputs/apk/release/app-release.apk ../../Marco-PDF-Android.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-android
+          path: |
+            Marco-PDF-Web.zip
+            Marco-PDF-Android.apk
+          if-no-files-found: error
+  publish:
+    needs: [desktop, web-android]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - name: Publicar descargas
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          sha256sum artifacts/* > artifacts/SHA256SUMS.txt
+          gh release create v1.1.0 artifacts/* --target "${{ github.sha }}" --title "Marco PDF 1.1 · Windows, Linux, web y Android" --notes "Lector PDF, OCR local en español e inglés, división por páginas o MB. Windows: instalador y portable. Linux: DEB y portable (Ubuntu 22.04 o posterior compatible, x64). Web: descomprimir y servir por HTTP/HTTPS. Android: APK firmado para instalación directa; no publicado en Google Play."
