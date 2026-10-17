@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | Portable de escritorio Windows x64 | `Marco-PDF-Portable.exe` | No |
 | Portable web Windows x64 | `Marco-PDF-Web-Portable.exe` | No: abre tu navegador en localhost |
-| Web normal | [Abrir web privada](https://marco-pdf.peskysa.chatgpt.site) · `Marco-PDF-Web.zip` para alojar | Sí para la alojada |
+| Web normal | [Abrir web normal](https://marco-pdf.peskysa.chatgpt.site) · `Marco-PDF-Web.zip` para alojar | Sí para la alojada |
 | Instalador Windows x64 | `Marco-PDF-Windows-Instalador.exe` | No tras descargar e instalar |
 | Instalador Linux amd64 | `Marco-PDF-Linux-amd64.deb` | No para el procesamiento |
 | Android | `Marco-PDF-Android.apk` | No tras descargar e instalar |

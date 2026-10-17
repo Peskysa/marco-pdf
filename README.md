@@ -6,7 +6,7 @@
 <a href="https://github.com/Peskysa/marco-pdf/releases/latest"><img alt="Última versión" src="https://img.shields.io/github/v/release/Peskysa/marco-pdf?color=173e40&style=flat-square"></a>
 </p>
 
-<p align="center"><strong>Tus documentos, en orden.</strong><br>Lee PDF, convierte escaneos en texto buscable y divide archivos por páginas o megas.<br>En español, con procesamiento en tu dispositivo.</p>
+<p align="center"><strong>Tus documentos, en orden.</strong><br>Lee PDF, convierte escaneos en texto buscable y divide archivos por páginas o megas.<br>Español · English · Français. Procesamiento en tu dispositivo.</p>
 
 <p align="center"><a href="https://marco-pdf.peskysa.chatgpt.site"><strong>ABRIR MARCO PDF WEB</strong></a> · <a href="https://github.com/Peskysa/marco-pdf/releases/latest">Descargas</a> · <a href="docs/README.md">Documentación</a> · <a href="https://github.com/Peskysa/marco-pdf/issues/new/choose">Ayuda y sugerencias</a></p>
 
@@ -24,7 +24,7 @@ Abre un documento, recorre sus páginas, ajusta el zoom y busca texto. Utiliza l
 | --- | --- | --- |
 | **Portable** · Windows x64 | [Marco-PDF-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Portable.exe) | No |
 | **Portable web** · Windows x64 | [Marco-PDF-Web-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Web-Portable.exe) | No: abre la aplicación en tu navegador local |
-| **Web normal** | [Abrir web privada](https://marco-pdf.peskysa.chatgpt.site) · [ZIP para alojar](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Web.zip) | Sí para la web alojada |
+| **Web normal** | [Abrir web normal](https://marco-pdf.peskysa.chatgpt.site) · [ZIP para alojar](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Web.zip) | Sí para la web alojada |
 | **Instalador Windows** · x64 | [Marco-PDF-Windows-Instalador.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Windows-Instalador.exe) | No tras descargarlo |
 | **Instalador Linux** · amd64 | [Marco-PDF-Linux-amd64.deb](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Linux-amd64.deb) | No para el procesamiento |
 | **Android** | [Marco-PDF-Android.apk](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Android.apk) | No tras descargarlo |
@@ -33,7 +33,7 @@ Abre un documento, recorre sus páginas, ajusta el zoom y busca texto. Utiliza l
 
 **No necesitas instalar Python, Node.js ni Tesseract para utilizar las aplicaciones compiladas.** El portable y el portable web son ejecutables únicos: cópialos a una carpeta o USB y ábrelos. El portable web incluye todos los recursos y crea un servidor de solo lectura en `127.0.0.1`; no se conecta a un servidor de Internet. Mantén abierta su ventana mientras utilizas el navegador.
 
-El instalador Windows funciona para el usuario actual, sin permisos de administrador. El DEB Linux se instala con el gestor de paquetes y requiere un entorno compatible con Ubuntu 22.04/glibc 2.35. El APK necesita WebView actualizado y no se ha probado en un teléfono físico. La web alojada y el repositorio mantienen acceso privado. [Instalación de las seis versiones](docs/INSTALACION.md).
+El instalador Windows funciona para el usuario actual, sin permisos de administrador. El DEB Linux se instala con el gestor de paquetes y requiere un entorno compatible con Ubuntu 22.04/glibc 2.35. El APK necesita WebView actualizado y no se ha probado en un teléfono físico. La web alojada es pública y el repositorio de GitHub mantiene acceso privado. [Instalación de las seis versiones](docs/INSTALACION.md).
 
 ## Lo que puedes hacer
 

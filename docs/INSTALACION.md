@@ -25,7 +25,7 @@ Necesita un navegador actualizado compatible, como Edge o Chrome, y permiso para
 
 ## 3. Web normal
 
-Abre [Marco PDF web](https://marco-pdf.peskysa.chatgpt.site) desde cualquier ordenador con un navegador compatible y conexión. Es privada: utiliza tu cuenta de ChatGPT autorizada.
+Abre [Marco PDF web](https://marco-pdf.peskysa.chatgpt.site) desde cualquier ordenador con un navegador compatible y conexión. La web está configurada como pública; el repositorio de código y las descargas de GitHub siguen privados.
 
 También se ofrece **`Marco-PDF-Web.zip`** para alojar la aplicación en otro servidor HTTP/HTTPS. No se abre directamente mediante doble clic en `index.html` y no contiene el lanzador portable. Para usar la web en un Windows sin red y sin instalar herramientas, elige la opción 2.
 

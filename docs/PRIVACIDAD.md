@@ -6,7 +6,7 @@
 
 La lectura, la división y el OCR se realizan en el dispositivo. La aplicación no implementa subidas de documentos a un servidor, cuentas propias, anuncios ni analítica.
 
-La web privada utiliza la autenticación de ChatGPT Sites; el repositorio y las descargas privadas utilizan GitHub. Esos servicios gestionan sus accesos y registros de acuerdo con sus políticas.
+La web alojada está configurada como pública. ChatGPT Sites gestiona su alojamiento y GitHub gestiona el repositorio y las descargas privadas. Esos servicios gestionan sus registros y los accesos que correspondan según su configuración y sus políticas.
 
 ## Conexiones
 
