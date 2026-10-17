@@ -8,7 +8,7 @@
 | --- | --- |
 | `app.py` | Ventana de escritorio, lectura, búsqueda y guardado |
 | `core.py` | Selección, serialización, división y OCR con PyMuPDF |
-| `test_core.py` | Cinco pruebas del motor de escritorio |
+| `test_core.py` | Seis pruebas del motor de escritorio |
 | `web/src/` | Aplicación compartida por navegador y Android |
 | `web/android/` | Proyecto nativo de Capacitor |
 | `web/scripts/` | Recursos de compilación y capturas reproducibles |

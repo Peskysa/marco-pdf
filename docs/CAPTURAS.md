@@ -43,8 +43,9 @@ Con las dependencias instaladas y el servidor web activo en `http://127.0.0.1:51
 ```sh
 pnpm exec playwright install chromium
 BROWSER_CHANNEL=chromium pnpm run screenshots
+BROWSER_CHANNEL=chromium node tests/offline.mjs
 ```
 
-En PowerShell establece `$env:BROWSER_CHANNEL='chromium'` antes de ejecutar `pnpm run screenshots`. Puedes utilizar `msedge` si está instalado. `APP_URL` permite seleccionar otra dirección.
+En PowerShell establece `$env:BROWSER_CHANNEL='chromium'` y después ejecuta `pnpm run screenshots` y `node tests/offline.mjs`. Puedes utilizar `msedge` si está instalado. `APP_URL` permite seleccionar otra dirección.
 
-El script `web/scripts/screenshots.mjs` genera los ejemplos temporales en `test-output/screenshots/`, verifica el texto OCR y guarda las cinco imágenes de la galería básica en `docs/images/`. El banner de portada es una ilustración SVG original del proyecto, separada de las capturas.
+El script `web/scripts/screenshots.mjs` genera los ejemplos temporales en `test-output/screenshots/`, verifica el texto OCR y guarda las cinco imágenes de la galería básica en `docs/images/`. La segunda orden verifica los tres idiomas sin peticiones externas y guarda la sexta captura, `frances.png`, en esa misma carpeta. El banner de portada es una ilustración SVG original del proyecto, separada de las capturas.

@@ -8,6 +8,7 @@
 - Portable web de un solo EXE con servidor de lectura en localhost, sin instalación ni Internet.
 - Verificación del EXE web desde una carpeta aislada con las peticiones externas bloqueadas, cuatro modos OCR y pantalla pequeña.
 - Versiones anteriores conservadas como historial; la publicación actual incluye seis formatos principales y documentación.
+- Documentación revisada: seis capturas reales, instrucciones para reproducir también la francesa y avisos de los tres idiomas OCR. Se mantiene la licencia AGPL-3.0 del proyecto.
 
 ## EXE portable único — 17 de octubre de 2026
 
