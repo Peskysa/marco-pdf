@@ -18,11 +18,17 @@ Se desinstala desde las aplicaciones instaladas de Windows. El instalador no tie
 
 ### Portable
 
+La opción de un solo archivo es **`Marco-PDF-Portable.exe`**. Descárgala y ábrela con doble clic. No hay asistente de instalación ni necesitas extraer un ZIP, conservar una carpeta `_internal`, instalar Python o Tesseract, ni descargar idiomas.
+
+Puedes copiar ese EXE a otra carpeta o a un USB. Al abrirse, despliega sus componentes en una carpeta temporal de Windows y los limpia al cerrarse normalmente. Por eso puede tardar unos segundos en arrancar. Necesita permiso para escribir en la carpeta temporal; no instala el programa. Los resultados se guardan donde tú elijas.
+
+También se mantiene la alternativa en carpeta:
+
 1. Descarga `Marco-PDF-Windows-Portable.zip`.
 2. Descomprime **toda la carpeta** en una ubicación donde tengas permisos.
 3. Abre `Marco PDF.exe` dentro de la carpeta `Marco PDF`.
 
-Mantén la carpeta `_internal` junto al ejecutable. Para retirar el portable, elimina su carpeta cuando la aplicación esté cerrada. Los PDF guardados en otras carpetas se conservan.
+En la alternativa ZIP, mantén `_internal` junto al ejecutable. Para retirar el portable, elimina el EXE único o la carpeta descomprimida cuando esté cerrado. Los PDF guardados en otras carpetas se conservan.
 
 ## Linux
 

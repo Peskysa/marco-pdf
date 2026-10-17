@@ -36,6 +36,15 @@ El preparador instala `requirements.txt` y descarga español e inglés en `tessd
 
 Para el instalador utiliza Inno Setup 6 y `packaging/windows.iss` después de generar `dist/Marco PDF`. El flujo de publicación incluye también los documentos y licencias del proyecto.
 
+Para generar el portable como **un único ejecutable**, desde la raíz:
+
+```powershell
+.\.venv\Scripts\python.exe packaging/build_portable.py
+.\dist\Marco-PDF-Portable.exe --self-test portable-report.json
+```
+
+Se crea `dist/Marco-PDF-Portable.exe`, con motor PDF, idiomas OCR y licencias dentro del archivo. La comprobación incorporada abre una ventana oculta, renderiza un PDF, divide por páginas y bytes y realiza OCR real de un escaneo generado en memoria. Escribe un informe JSON y termina con error si falla. Para probar el aislamiento, copia solo el EXE a una carpeta vacía y ejecuta allí esa comprobación.
+
 ## Escritorio en Linux
 
 Utiliza Python 3.12, Tkinter y un entorno gráfico. En una distribución compatible:

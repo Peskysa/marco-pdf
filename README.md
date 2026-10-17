@@ -22,12 +22,14 @@ Abre un documento, recorre sus páginas, ajusta el zoom y busca texto. Utiliza l
 
 | Plataforma | Formatos | Para empezar |
 | --- | --- | --- |
-| **Windows 10/11, x64** | Instalador EXE y ZIP portable | [Descargar para Windows](https://github.com/Peskysa/marco-pdf/releases/latest) |
+| **Windows 10/11, x64** | Instalador EXE, **EXE portable único** y ZIP portable | [Descargar para Windows](https://github.com/Peskysa/marco-pdf/releases/latest) |
 | **Linux, x64** | Paquete DEB y TAR.GZ portable | [Descargar para Linux](https://github.com/Peskysa/marco-pdf/releases/latest) |
 | **Web** | Navegador y ZIP para alojar | [Abrir la web privada](https://marco-pdf.peskysa.chatgpt.site) |
 | **Android** | APK firmado para instalación directa | [Descargar APK](https://github.com/Peskysa/marco-pdf/releases/latest) |
 
 **No necesitas Python ni Node.js para usar los paquetes compilados.** Windows, Linux y Android incluyen el motor OCR y los idiomas español e inglés. La web necesita conexión para cargar sus recursos; después procesa los PDF en el navegador. El ZIP web se sirve por HTTP/HTTPS, no se abre directamente con doble clic.
+
+**Para abrirlo directamente sin instalar ni descomprimir**, descarga [Marco-PDF-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.1.0/Marco-PDF-Portable.exe) para Windows y haz doble clic. El lector, el motor OCR y los idiomas van dentro del archivo. Al iniciarse extrae sus componentes automáticamente en una carpeta temporal; no requiere instalarlos.
 
 Linux requiere Ubuntu 22.04 o una distribución compatible con glibc 2.35 y entorno gráfico. El proyecto Android tiene mínimo Android 7, pero necesita un WebView actualizado compatible con las bibliotecas web. El APK está compilado y firmado; no se ha probado en un teléfono físico ni está publicado en Google Play. La web y el repositorio mantienen acceso privado. [Requisitos completos](docs/INSTALACION.md).
 

@@ -14,3 +14,4 @@ web/public/pdfjs/
 *.p12
 *.jks
 .signing/
+portable-report.json

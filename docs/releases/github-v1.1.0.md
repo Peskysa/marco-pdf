@@ -10,13 +10,14 @@ Lector PDF en español, con **OCR local** y división por páginas o tamaño má
 | --- | --- |
 | Instalar en Windows 10/11 x64 | `Marco-PDF-Windows-Instalador.exe` |
 | Windows sin instalación | `Marco-PDF-Windows-Portable.zip` |
+| **Windows portable de un único EXE, sin descomprimir** | **`Marco-PDF-Portable.exe`** |
 | Instalar en Debian/Ubuntu compatibles, x64 | `Marco-PDF-Linux-amd64.deb` |
 | Linux portable, x64 | `Marco-PDF-Linux-Portable.tar.gz` |
 | Alojar la aplicación web por HTTP/HTTPS | `Marco-PDF-Web.zip` |
 | Instalar directamente en Android | `Marco-PDF-Android.apk` |
 | Manuales, licencia y capturas para descargar | `Marco-PDF-Documentacion.zip` |
 
-Los paquetes Windows, Linux y Android incluyen los idiomas OCR español e inglés. No requieren instalar Python o Node.js. El ZIP web necesita un servidor HTTP/HTTPS. La web alojada y el repositorio son privados.
+Los paquetes Windows, Linux y Android incluyen los idiomas OCR español e inglés. No requieren instalar Python o Node.js. **Para abrirlo directamente en Windows, descarga `Marco-PDF-Portable.exe` y haz doble clic**: incluye lector y OCR en un archivo y extrae sus componentes temporales automáticamente. Su suma está en `Marco-PDF-Portable.exe.sha256`. El ZIP web necesita un servidor HTTP/HTTPS. La web alojada y el repositorio son privados.
 
 ## Funciones
 
@@ -34,7 +35,7 @@ Los paquetes Windows, Linux y Android incluyen los idiomas OCR español e inglé
 - [Licencia GNU AGPL-3.0](https://github.com/Peskysa/marco-pdf/blob/main/LICENSE), [explicación](https://github.com/Peskysa/marco-pdf/blob/main/docs/LICENCIA.md) y [terceros](https://github.com/Peskysa/marco-pdf/blob/main/THIRD_PARTY.md).
 - [Capturas del lector, división, OCR y pantalla pequeña](https://github.com/Peskysa/marco-pdf/blob/main/docs/CAPTURAS.md).
 
-El ZIP de documentación reúne los manuales, capturas, licencia y avisos de terceros. Su suma está en `Marco-PDF-Documentacion.zip.sha256`; las sumas de las aplicaciones permanecen en `SHA256SUMS.txt`. Los ejecutables 1.1.0 conservan sus bytes originales tras esta ampliación de documentación.
+El ZIP de documentación reúne los manuales, capturas, licencia y avisos de terceros. Su suma está en `Marco-PDF-Documentacion.zip.sha256`; las sumas de los paquetes originales permanecen en `SHA256SUMS.txt`. El EXE portable único es una descarga adicional y los paquetes originales conservan sus bytes.
 
 ## Verificación y límites
 

@@ -1,5 +1,11 @@
 # Historial de cambios
 
+## EXE portable único — 17 de octubre de 2026
+
+- Nuevo `Marco-PDF-Portable.exe` para Windows x64: un solo archivo con lector, OCR español/inglés y licencias integrados, sin instalación ni extracción manual.
+- Comprobación del ejecutable compilado con renderizado, división y OCR real desde una carpeta que solo contiene el EXE.
+- Se mantiene el ZIP portable anterior como alternativa.
+
 ## Documentación ampliada — 17 de octubre de 2026
 
 - Portada visual con banner, enlaces de descarga y cinco capturas reproducibles de la aplicación real.

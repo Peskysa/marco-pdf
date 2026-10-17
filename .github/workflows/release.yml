@@ -36,6 +36,10 @@ jobs:
           Copy-Item docs,assets,licenses -Destination 'dist/Marco PDF' -Recurse
           Compress-Archive -Path 'dist/Marco PDF' -DestinationPath dist/Marco-PDF-Windows-Portable.zip
           & 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe' packaging/windows.iss
+          python packaging/build_portable.py
+          $portableCheck = Start-Process -FilePath (Resolve-Path dist/Marco-PDF-Portable.exe) -ArgumentList '--self-test', (Join-Path $PWD 'portable-report.json') -WindowStyle Hidden -Wait -PassThru
+          if ($portableCheck.ExitCode -ne 0) { throw 'Falló la comprobación del EXE portable.' }
+          Get-Content portable-report.json
       - name: Compilar Linux
         if: runner.os == 'Linux'
         run: |
