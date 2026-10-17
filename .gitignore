@@ -1,0 +1,8 @@
+.deps/
+.venv/
+__pycache__/
+build/
+dist/
+*.spec
+tessdata/*.traineddata
+test-output/
