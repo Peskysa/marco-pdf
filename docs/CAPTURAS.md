@@ -30,6 +30,12 @@ Se crea una imagen con texto, se introduce como página escaneada, se procesa co
 
 Es una ventana de navegador de **390 × 844 píxeles**, capturada con toda su página. No es una fotografía de un dispositivo ni acredita una prueba en un móvil Android físico. Estas capturas tampoco representan la interfaz Tkinter de Windows/Linux, que utiliza otros controles.
 
+## Interfaz francesa
+
+![Interfaz y OCR franceses probados sin peticiones a Internet](images/frances.png)
+
+Esta captura se genera con `web/tests/offline.mjs`, bloqueando todas las peticiones fuera de localhost. Las seis variantes de la versión 1.2 comparten los idiomas español, inglés y francés para interfaz y OCR.
+
 ## Reproducirlas
 
 Con las dependencias instaladas y el servidor web activo en `http://127.0.0.1:5173/`, desde `web/`:
@@ -41,4 +47,4 @@ BROWSER_CHANNEL=chromium pnpm run screenshots
 
 En PowerShell establece `$env:BROWSER_CHANNEL='chromium'` antes de ejecutar `pnpm run screenshots`. Puedes utilizar `msedge` si está instalado. `APP_URL` permite seleccionar otra dirección.
 
-El script `web/scripts/screenshots.mjs` genera los ejemplos temporales en `test-output/screenshots/`, verifica el texto OCR y guarda estas cinco imágenes en `docs/images/`. El banner de portada es una ilustración SVG original del proyecto, separada de las capturas.
+El script `web/scripts/screenshots.mjs` genera los ejemplos temporales en `test-output/screenshots/`, verifica el texto OCR y guarda las cinco imágenes de la galería básica en `docs/images/`. El banner de portada es una ilustración SVG original del proyecto, separada de las capturas.

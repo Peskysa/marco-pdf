@@ -4,6 +4,7 @@ import os
 import sys
 from pathlib import Path
 import pymupdf as pdf
+from i18n import tr
 
 
 def pages_from_spec(spec, count):
@@ -13,10 +14,10 @@ def pages_from_spec(spec, count):
     for part in spec.split(','):
         values = part.strip().split('-')
         if len(values) not in (1, 2) or not all(v.isdigit() for v in values):
-            raise ValueError('Usa páginas como 1-3,5,8-10.')
+            raise ValueError(tr('Usa páginas como 1-3,5,8-10.'))
         start, end = int(values[0]), int(values[-1])
         if not 1 <= start <= end <= count:
-            raise ValueError(f'Las páginas deben estar entre 1 y {count}.')
+            raise ValueError(tr('Las páginas deben estar entre 1 y {count}.', count=count))
         result.extend(range(start - 1, end))
     return list(dict.fromkeys(result))
 
@@ -30,13 +31,13 @@ def serialize(doc, pages):
 
 def split_pages(doc, pages, size):
     if size < 1:
-        raise ValueError('El número de páginas debe ser mayor que cero.')
+        raise ValueError(tr('El número de páginas debe ser mayor que cero.'))
     return [serialize(doc, pages[i:i+size]) for i in range(0, len(pages), size)]
 
 
 def split_megabytes(doc, pages, mb):
     if not math.isfinite(mb) or mb <= 0:
-        raise ValueError('Introduce un tamaño válido mayor que cero.')
+        raise ValueError(tr('Introduce un tamaño válido mayor que cero.'))
     limit = int(mb * 1_000_000)
     parts, pending, data = [], [], None
     for page in pages:
@@ -46,7 +47,7 @@ def split_megabytes(doc, pages, mb):
             continue
         single = serialize(doc, [page])
         if len(single) > limit:
-            raise ValueError(f'La página {page+1} ocupa {len(single)/1_000_000:.2f} MB y supera el límite. Aumenta el tamaño máximo.')
+            raise ValueError(tr('La página {page} ocupa {size} MB y supera el límite. Aumenta el tamaño máximo.', page=page+1, size=f'{len(single)/1_000_000:.2f}'))
         if pending:
             parts.append(data)
         pending, data = [page], single
@@ -60,9 +61,9 @@ def tessdata_dir():
     candidates = [base / 'tessdata', Path(os.environ.get('TESSDATA_PREFIX', 'tessdata')),
                   Path('C:/Program Files/Tesseract-OCR/tessdata')]
     for path in candidates:
-        if (path / 'spa.traineddata').exists() and (path / 'eng.traineddata').exists():
+        if all((path / f'{lang}.traineddata').exists() for lang in ('spa', 'eng', 'fra')):
             return str(path)
-    raise ValueError('Faltan los idiomas OCR. Ejecuta preparar.ps1 o instala Tesseract con español e inglés.')
+    raise ValueError(tr('Faltan los idiomas OCR. Ejecuta preparar.ps1 para incluir español, inglés y francés.'))
 
 
 def ocr_document(doc, pages, language, progress=lambda x: None):

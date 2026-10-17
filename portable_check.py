@@ -21,12 +21,15 @@ def run(report, window_class):
                 page = scan.new_page()
                 page.insert_image(page.rect, pixmap=source[0].get_pixmap(dpi=200))
                 assert not page.get_text().strip()
-                recognized = ocr_document(scan, [0], 'spa+eng')
+                recognized = ocr_document(scan, [0], 'spa+eng+fra')
             with pdf.open('pdf', recognized) as result:
                 assert 'Marco' in result[0].get_text()
-            checks.append('OCR español e inglés incluidos')
+            checks.append('OCR español, inglés y francés incluidos')
             app = window_class()
             app.withdraw()
+            for language in ('English', 'Français', 'Español'):
+                app.ui_language.set(language)
+                app.change_language()
             app.doc = pdf.open('pdf', parts[0])
             app.update_idletasks()
             app.render()

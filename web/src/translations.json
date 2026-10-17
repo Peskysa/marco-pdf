@@ -1,0 +1,478 @@
+{
+  "  Lector · OCR · Dividir": [
+    "  Reader · OCR · Split",
+    "  Lecture · OCR · Découper"
+  ],
+  "Abrir PDF": [
+    "Open PDF",
+    "Ouvrir un PDF"
+  ],
+  "Ajustar ancho": [
+    "Fit width",
+    "Ajuster la largeur"
+  ],
+  "Buscar texto": [
+    "Find text",
+    "Rechercher du texte"
+  ],
+  "Ver texto": [
+    "View text",
+    "Voir le texte"
+  ],
+  "− Zoom": [
+    "− Zoom",
+    "− Zoom"
+  ],
+  "+ Zoom": [
+    "+ Zoom",
+    "+ Zoom"
+  ],
+  "Sin documento": [
+    "No document",
+    "Aucun document"
+  ],
+  "HERRAMIENTAS": [
+    "TOOLS",
+    "OUTILS"
+  ],
+  "Páginas (vacío = todas)": [
+    "Pages (empty = all)",
+    "Pages (vide = toutes)"
+  ],
+  "Ejemplo: 1-3,5,8-10": [
+    "Example: 1-3,5,8-10",
+    "Exemple : 1-3,5,8-10"
+  ],
+  "Dividir cada N páginas": [
+    "Split every N pages",
+    "Découper toutes les N pages"
+  ],
+  "Dividir por páginas": [
+    "Split by pages",
+    "Découper par pages"
+  ],
+  "Tamaño máximo en MB": [
+    "Maximum size in MB",
+    "Taille maximale en Mo"
+  ],
+  "Dividir por tamaño": [
+    "Split by size",
+    "Découper par taille"
+  ],
+  "1 MB = 1.000.000 bytes\nSe conservan páginas completas.": [
+    "1 MB = 1,000,000 bytes\nWhole pages are preserved.",
+    "1 Mo = 1 000 000 octets\nLes pages restent entières."
+  ],
+  "Reconocimiento OCR": [
+    "OCR recognition",
+    "Reconnaissance OCR"
+  ],
+  "Crear PDF con texto": [
+    "Create searchable PDF",
+    "Créer un PDF avec texte"
+  ],
+  "Procesamiento local.\nEl OCR conserva las páginas\nque ya tienen texto.": [
+    "Local processing.\nOCR keeps pages that\nalready contain text.",
+    "Traitement local.\nL’OCR conserve les pages\ncontenant déjà du texte."
+  ],
+  "Abre un PDF para empezar": [
+    "Open a PDF to get started",
+    "Ouvrez un PDF pour commencer"
+  ],
+  "Listo · Tus documentos permanecen en tu equipo": [
+    "Ready · Your documents stay on your device",
+    "Prêt · Vos documents restent sur votre appareil"
+  ],
+  "Espera a que termine la operación actual.": [
+    "Wait for the current operation to finish.",
+    "Attendez la fin de l’opération en cours."
+  ],
+  "Abre un PDF primero.": [
+    "Open a PDF first.",
+    "Ouvrez d’abord un PDF."
+  ],
+  "Documentos PDF": [
+    "PDF documents",
+    "Documents PDF"
+  ],
+  "PDF protegido": [
+    "Protected PDF",
+    "PDF protégé"
+  ],
+  "Contraseña:": [
+    "Password:",
+    "Mot de passe :"
+  ],
+  "No se pudo desbloquear el documento.": [
+    "Could not unlock the document.",
+    "Impossible de déverrouiller le document."
+  ],
+  "El documento no tiene páginas.": [
+    "The document has no pages.",
+    "Le document ne contient aucune page."
+  ],
+  "No se puede abrir": [
+    "Cannot open",
+    "Ouverture impossible"
+  ],
+  "Buscar": [
+    "Find",
+    "Rechercher"
+  ],
+  "Texto a buscar:": [
+    "Text to find:",
+    "Texte à rechercher :"
+  ],
+  "{count} coincidencias en la página {page}": [
+    "{count} matches on page {page}",
+    "{count} résultats à la page {page}"
+  ],
+  "Sin resultados. Si es un escaneo, crea primero un PDF con OCR y ábrelo.": [
+    "No results. For scans, create and open an OCR PDF first.",
+    "Aucun résultat. Pour un scan, créez et ouvrez d’abord un PDF avec OCR."
+  ],
+  "Texto · Página {page}": [
+    "Text · Page {page}",
+    "Texte · Page {page}"
+  ],
+  "Esta página no tiene texto. Utiliza el OCR.": [
+    "This page has no text. Use OCR.",
+    "Cette page ne contient pas de texte. Utilisez l’OCR."
+  ],
+  "Procesando…": [
+    "Processing…",
+    "Traitement…"
+  ],
+  "Introduce un valor mayor que cero.": [
+    "Enter a value greater than zero.",
+    "Saisissez une valeur supérieure à zéro."
+  ],
+  "Revisa los datos": [
+    "Check the input",
+    "Vérifiez les données"
+  ],
+  "Carpeta para los archivos divididos": [
+    "Folder for split files",
+    "Dossier des fichiers découpés"
+  ],
+  "Creados {count} archivos en:\n{path}": [
+    "Created {count} files in:\n{path}",
+    "{count} fichiers créés dans :\n{path}"
+  ],
+  "Páginas": [
+    "Pages",
+    "Pages"
+  ],
+  "Guardar": [
+    "Save",
+    "Enregistrer"
+  ],
+  "Elige otro nombre para conservar el original.": [
+    "Choose another name to keep the original.",
+    "Choisissez un autre nom pour conserver l’original."
+  ],
+  "OCR: {count}/{total} páginas": [
+    "OCR: {count}/{total} pages",
+    "OCR : {count}/{total} pages"
+  ],
+  "PDF con texto guardado en:\n{path}": [
+    "Searchable PDF saved to:\n{path}",
+    "PDF avec texte enregistré dans :\n{path}"
+  ],
+  "Espera a que termine el procesamiento antes de cerrar.": [
+    "Wait for processing to finish before closing.",
+    "Attendez la fin du traitement avant de fermer."
+  ],
+  "Usa páginas como 1-3,5,8-10.": [
+    "Use pages such as 1-3,5,8-10.",
+    "Utilisez des pages comme 1-3,5,8-10."
+  ],
+  "Las páginas deben estar entre 1 y {count}.": [
+    "Pages must be between 1 and {count}.",
+    "Les pages doivent être comprises entre 1 et {count}."
+  ],
+  "El número de páginas debe ser mayor que cero.": [
+    "The page count must be greater than zero.",
+    "Le nombre de pages doit être supérieur à zéro."
+  ],
+  "Introduce un tamaño válido mayor que cero.": [
+    "Enter a valid size greater than zero.",
+    "Saisissez une taille valide supérieure à zéro."
+  ],
+  "La página {page} ocupa {size} MB y supera el límite. Aumenta el tamaño máximo.": [
+    "Page {page} is {size} MB and exceeds the limit. Increase the maximum size.",
+    "La page {page} fait {size} Mo et dépasse la limite. Augmentez la taille maximale."
+  ],
+  "Faltan los idiomas OCR. Ejecuta preparar.ps1 para incluir español, inglés y francés.": [
+    "OCR languages are missing. Run preparar.ps1 to include Spanish, English and French.",
+    "Les langues OCR sont absentes. Exécutez preparar.ps1 pour inclure l’espagnol, l’anglais et le français."
+  ],
+  "Idioma de interfaz": [
+    "Interface language",
+    "Langue de l’interface"
+  ],
+  "Tus archivos se quedan contigo": [
+    "Your files stay with you",
+    "Vos fichiers restent avec vous"
+  ],
+  "TU MESA DE TRABAJO": [
+    "YOUR WORKSPACE",
+    "VOTRE ESPACE DE TRAVAIL"
+  ],
+  "El papeleo,": [
+    "Paperwork,",
+    "Les documents,"
+  ],
+  "más fácil.": [
+    "made easier.",
+    "en toute simplicité."
+  ],
+  "Lee, reconoce el texto y divide tus documentos. Todo en un mismo lugar.": [
+    "Read, recognize text and split documents. All in one place.",
+    "Lisez, reconnaissez le texte et découpez vos documents. Au même endroit."
+  ],
+  "Páginas que quieres usar": [
+    "Pages to use",
+    "Pages à utiliser"
+  ],
+  "Todas las páginas": [
+    "All pages",
+    "Toutes les pages"
+  ],
+  "Por ejemplo: 1-3, 5, 8-10": [
+    "For example: 1-3, 5, 8-10",
+    "Par exemple : 1-3, 5, 8-10"
+  ],
+  "Dividir documento": [
+    "Split document",
+    "Découper le document"
+  ],
+  "Crear archivos por": [
+    "Create files by",
+    "Créer des fichiers par"
+  ],
+  "Número de páginas": [
+    "Page count",
+    "Nombre de pages"
+  ],
+  "Tamaño máximo (MB)": [
+    "Maximum size (MB)",
+    "Taille maximale (Mo)"
+  ],
+  "páginas": [
+    "pages",
+    "pages"
+  ],
+  "Cantidad": [
+    "Amount",
+    "Quantité"
+  ],
+  "Dividir PDF": [
+    "Split PDF",
+    "Découper le PDF"
+  ],
+  "El tamaño se comprueba archivo a archivo.": [
+    "The size is checked for each file.",
+    "La taille est vérifiée pour chaque fichier."
+  ],
+  "1 MB = 1.000.000 bytes.": [
+    "1 MB = 1,000,000 bytes.",
+    "1 Mo = 1 000 000 octets."
+  ],
+  "Reconocer texto": [
+    "Recognize text",
+    "Reconnaître le texte"
+  ],
+  "Idioma del documento": [
+    "Document language",
+    "Langue du document"
+  ],
+  "Español + inglés + francés": [
+    "Spanish + English + French",
+    "Espagnol + anglais + français"
+  ],
+  "Español": [
+    "Spanish",
+    "Espagnol"
+  ],
+  "Inglés": [
+    "English",
+    "Anglais"
+  ],
+  "Francés": [
+    "French",
+    "Français"
+  ],
+  "Crear PDF con OCR": [
+    "Create OCR PDF",
+    "Créer un PDF avec OCR"
+  ],
+  "Convierte los escaneos en texto buscable. Las páginas que ya tienen texto se conservan.": [
+    "Turn scans into searchable text. Pages with existing text are preserved.",
+    "Transformez les scans en texte recherchable. Les pages contenant déjà du texte sont conservées."
+  ],
+  "Antes de empezar": [
+    "Before you start",
+    "Avant de commencer"
+  ],
+  "Los originales no se modifican. Los documentos derivados no conservan firmas digitales ni marcadores. Si una página supera el límite de MB, tendrás que aumentarlo. El OCR puede tardar: revisa siempre el resultado. En Android, guarda o comparte el resultado desde el menú del sistema.": [
+    "Originals are not modified. Derived documents do not preserve digital signatures or bookmarks. If a page exceeds the MB limit, increase it. OCR can take time: always review the result. On Android, save or share from the system menu.",
+    "Les originaux ne sont pas modifiés. Les documents dérivés ne conservent pas les signatures numériques ni les signets. Si une page dépasse la limite, augmentez-la. L’OCR peut prendre du temps : vérifiez le résultat. Sur Android, enregistrez ou partagez via le menu système."
+  ],
+  "DOCUMENTO": [
+    "DOCUMENT",
+    "DOCUMENT"
+  ],
+  "Tu próximo documento": [
+    "Your next document",
+    "Votre prochain document"
+  ],
+  "Sin archivo abierto": [
+    "No file open",
+    "Aucun fichier ouvert"
+  ],
+  "MENOS PASOS, MÁS CLARIDAD": [
+    "FEWER STEPS, MORE CLARITY",
+    "MOINS D’ÉTAPES, PLUS DE CLARTÉ"
+  ],
+  "Un espacio para tus PDF.": [
+    "A space for your PDFs.",
+    "Un espace pour vos PDF."
+  ],
+  "Abre un documento para leerlo,": [
+    "Open a document to read it,",
+    "Ouvrez un document pour le lire,"
+  ],
+  "extraer sus páginas o reconocer el texto.": [
+    "extract pages or recognize text.",
+    "extraire ses pages ou reconnaître son texte."
+  ],
+  "Elegir un PDF": [
+    "Choose a PDF",
+    "Choisir un PDF"
+  ],
+  "También puedes arrastrar un archivo aquí.": [
+    "You can also drop a file here.",
+    "Vous pouvez aussi déposer un fichier ici."
+  ],
+  "Controles del documento": [
+    "Document controls",
+    "Commandes du document"
+  ],
+  "Página anterior": [
+    "Previous page",
+    "Page précédente"
+  ],
+  "Ir a página": [
+    "Go to page",
+    "Aller à la page"
+  ],
+  "Página siguiente": [
+    "Next page",
+    "Page suivante"
+  ],
+  "Reducir zoom": [
+    "Zoom out",
+    "Réduire le zoom"
+  ],
+  "Ampliar zoom": [
+    "Zoom in",
+    "Agrandir le zoom"
+  ],
+  "Ajustar": [
+    "Fit",
+    "Ajuster"
+  ],
+  "Buscar en el documento": [
+    "Search the document",
+    "Rechercher dans le document"
+  ],
+  "Listo para guardar": [
+    "Ready to save",
+    "Prêt à enregistrer"
+  ],
+  "Listo para empezar": [
+    "Ready to start",
+    "Prêt à commencer"
+  ],
+  "MB como máximo": [
+    "MB maximum",
+    "Mo maximum"
+  ],
+  "No se pudo completar la operación.": [
+    "Could not complete the operation.",
+    "Impossible de terminer l’opération."
+  ],
+  "Abriendo documento…": [
+    "Opening document…",
+    "Ouverture du document…"
+  ],
+  "Este PDF está protegido. Ábrelo con contraseña en la versión de escritorio.": [
+    "This PDF is protected. Open it with a password in the desktop version.",
+    "Ce PDF est protégé. Ouvrez-le avec son mot de passe dans la version de bureau."
+  ],
+  "No se pudo abrir el PDF. Comprueba que es un archivo válido.": [
+    "Could not open the PDF. Check that it is a valid file.",
+    "Impossible d’ouvrir le PDF. Vérifiez la validité du fichier."
+  ],
+  "{count} páginas · {size} MB": [
+    "{count} pages · {size} MB",
+    "{count} pages · {size} Mo"
+  ],
+  "Documento abierto · Procesamiento en tu dispositivo": [
+    "Document open · Processing on your device",
+    "Document ouvert · Traitement sur votre appareil"
+  ],
+  "Guardar todo en ZIP": [
+    "Save all as ZIP",
+    "Tout enregistrer en ZIP"
+  ],
+  "Preparando ZIP…": [
+    "Preparing ZIP…",
+    "Préparation du ZIP…"
+  ],
+  "ZIP preparado": [
+    "ZIP ready",
+    "ZIP prêt"
+  ],
+  "Dividiendo documento…": [
+    "Splitting document…",
+    "Découpage du document…"
+  ],
+  "Dividiendo: {count}/{total} páginas": [
+    "Splitting: {count}/{total} pages",
+    "Découpage : {count}/{total} pages"
+  ],
+  "{count} archivos listos para guardar": [
+    "{count} files ready to save",
+    "{count} fichiers prêts à enregistrer"
+  ],
+  "PDF con texto listo. Guárdalo y ábrelo para buscar o copiar.": [
+    "Searchable PDF ready. Save and open it to search or copy.",
+    "PDF avec texte prêt. Enregistrez-le et ouvrez-le pour rechercher ou copier."
+  ],
+  "Texto encontrado en la página {page}": [
+    "Text found on page {page}",
+    "Texte trouvé à la page {page}"
+  ],
+  "Sin coincidencias. Para escaneos, genera primero el PDF con OCR.": [
+    "No matches. For scans, create an OCR PDF first.",
+    "Aucun résultat. Pour les scans, créez d’abord un PDF avec OCR."
+  ],
+  "Elige páginas entre 1 y {count}.": [
+    "Choose pages between 1 and {count}.",
+    "Choisissez des pages entre 1 et {count}."
+  ],
+  "Introduce una cantidad válida mayor que cero. Las páginas deben ser un número entero.": [
+    "Enter a valid amount greater than zero. Pages must be a whole number.",
+    "Saisissez une quantité valide supérieure à zéro. Le nombre de pages doit être entier."
+  ],
+  "Página {count} de {total}": [
+    "Page {count} of {total}",
+    "Page {count} sur {total}"
+  ],
+  "La página es demasiado grande para OCR en este dispositivo. Usa la versión de escritorio.": [
+    "This page is too large for OCR on this device. Use the desktop version.",
+    "Cette page est trop grande pour l’OCR sur cet appareil. Utilisez la version de bureau."
+  ]
+}

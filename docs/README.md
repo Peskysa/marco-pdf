@@ -13,7 +13,7 @@
 
 - [Galería de capturas reales](CAPTURAS.md).
 - [Licencia explicada](LICENCIA.md), [texto completo](../LICENSE) y [terceros](../THIRD_PARTY.md).
-- [Historial](../CHANGELOG.md) y [versión 1.1.0](releases/v1.1.0.md).
+- [Historial](../CHANGELOG.md) y [versión 1.2.0](releases/v1.2.0.md).
 - [Desarrollo](DESARROLLO.md), [contribuir](../CONTRIBUTING.md) y [seguridad](../SECURITY.md).
 
-Esta documentación describe la versión **1.1.0**. Las capturas utilizan datos ficticios.
+Esta documentación describe la versión **1.2.0**. Las capturas utilizan datos ficticios.

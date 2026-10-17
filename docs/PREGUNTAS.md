@@ -44,7 +44,11 @@ No. Se ofrece un APK firmado para instalación directa. No se ha validado en un 
 
 ## ¿La web se instala como PWA?
 
-La versión actual no incorpora PWA ni almacenamiento completo para recargar sin conexión. Usa escritorio o Android para trabajar sin conexión.
+La web alojada no incorpora PWA ni almacenamiento completo para recargar sin conexión. Para usar la interfaz web sin Internet y sin instalar, descarga `Marco-PDF-Web-Portable.exe`: contiene la aplicación completa y abre un servidor local en tu equipo. Mantén su ventana abierta mientras usas el navegador. También funcionan sin conexión el portable de escritorio, las aplicaciones instaladas y Android.
+
+## ¿Puedo reconocer documentos franceses?
+
+Sí. Desde la versión 1.2, todas las variantes incluyen OCR español, inglés y francés, tanto por separado como combinados. También puedes cambiar el idioma de la interfaz. Las versiones 1.1 históricas no incluyen francés.
 
 ## ¿Por qué no abre el ZIP web con doble clic?
 

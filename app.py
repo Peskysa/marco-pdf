@@ -8,6 +8,16 @@ from pathlib import Path
 import pymupdf as pdf
 from PIL import Image, ImageTk
 from core import pages_from_spec, split_pages, split_megabytes, ocr_document
+from i18n import tr, set_locale
+
+
+def localized_dialog(function):
+    return lambda title, text, *args, **kwargs: function(tr(title), tr(text), *args, **kwargs)
+
+
+for _name in ('showinfo', 'showerror'):
+    setattr(messagebox, _name, localized_dialog(getattr(messagebox, _name)))
+simpledialog.askstring = localized_dialog(simpledialog.askstring)
 
 
 class MarcoPDF(tk.Tk):
@@ -30,6 +40,10 @@ class MarcoPDF(tk.Tk):
         ttk.Label(top, text='Marco PDF', style='Title.TLabel').pack(side='left')
         ttk.Label(top, text='  Lector · OCR · Dividir', foreground='#506579').pack(side='left')
         ttk.Button(top, text='Abrir PDF', command=self.open_file).pack(side='right')
+        self.ui_language = ttk.Combobox(top, values=['Español', 'English', 'Français'], state='readonly', width=10)
+        self.ui_language.set('Español')
+        self.ui_language.pack(side='right', padx=12)
+        self.ui_language.bind('<<ComboboxSelected>>', self.change_language)
         bar = ttk.Frame(self, padding=(14, 0, 14, 10))
         bar.pack(fill='x')
         for label, action in [('◀', lambda: self.move(-1)), ('▶', lambda: self.move(1)),
@@ -61,8 +75,9 @@ class MarcoPDF(tk.Tk):
         ttk.Label(tools, text='1 MB = 1.000.000 bytes\nSe conservan páginas completas.', foreground='#617384').pack(anchor='w', pady=6)
         ttk.Separator(tools).pack(fill='x', pady=18)
         ttk.Label(tools, text='Reconocimiento OCR').pack(anchor='w')
-        self.language = ttk.Combobox(tools, values=['spa+eng', 'spa', 'eng'], state='readonly')
-        self.language.set('spa+eng')
+        self.ocr_languages = {'Español + English + Français': 'spa+eng+fra', 'Español': 'spa', 'English': 'eng', 'Français': 'fra'}
+        self.language = ttk.Combobox(tools, values=list(self.ocr_languages), state='readonly', width=29)
+        self.language.set('Español + English + Français')
         self.language.pack(fill='x', pady=6)
         ttk.Button(tools, text='Crear PDF con texto', command=self.ocr).pack(fill='x')
         ttk.Label(tools, text='Procesamiento local.\nEl OCR conserva las páginas\nque ya tienen texto.', foreground='#617384').pack(anchor='w', pady=10)
@@ -81,7 +96,26 @@ class MarcoPDF(tk.Tk):
         ttk.Label(self, textvariable=self.status, padding=10).pack(fill='x')
         self.bind('<Control-o>', lambda e: self.open_file())
         self.protocol('WM_DELETE_WINDOW', self.close)
+        self.translatable = []
+        def collect(widget):
+            if 'text' in widget.keys() and widget.cget('text'):
+                self.translatable.append((widget, widget.cget('text')))
+            for child in widget.winfo_children():
+                collect(child)
+        collect(self)
         self.after(100, self.poll)
+
+    def change_language(self, event=None):
+        set_locale({'Español': 'es', 'English': 'en', 'Français': 'fr'}[self.ui_language.get()])
+        for widget, key in self.translatable:
+            widget.configure(text=tr(key))
+        self.status.set(tr('Listo · Tus documentos permanecen en tu equipo'))
+        if self.doc:
+            if not self.busy:
+                self.render()
+        else:
+            self.canvas.delete('all')
+            self.canvas.create_text(320, 220, text=tr('Abre un PDF para empezar'), fill='white', font=('Segoe UI', 22))
 
     def ready(self):
         if self.busy:
@@ -95,7 +129,7 @@ class MarcoPDF(tk.Tk):
     def open_file(self):
         if self.busy:
             return
-        path = filedialog.askopenfilename(filetypes=[('Documentos PDF', '*.pdf')])
+        path = filedialog.askopenfilename(filetypes=[(tr('Documentos PDF'), '*.pdf')])
         if not path:
             return
         doc = None
@@ -104,9 +138,9 @@ class MarcoPDF(tk.Tk):
             if doc.needs_pass:
                 password = simpledialog.askstring('PDF protegido', 'Contraseña:', show='*')
                 if password is None or not doc.authenticate(password):
-                    raise ValueError('No se pudo desbloquear el documento.')
+                    raise ValueError(tr('No se pudo desbloquear el documento.'))
             if not len(doc):
-                raise ValueError('El documento no tiene páginas.')
+                raise ValueError(tr('El documento no tiene páginas.'))
             if self.doc:
                 self.doc.close()
             self.doc, self.path, self.page = doc, Path(path), 0
@@ -160,24 +194,24 @@ class MarcoPDF(tk.Tk):
                         self.canvas.create_rectangle(15+rect.x0*self.zoom, 15+rect.y0*self.zoom,
                                                      15+rect.x1*self.zoom, 15+rect.y1*self.zoom,
                                                      outline='#e4a600', width=3)
-                    self.status.set(f'{len(hits)} coincidencias en la página {index+1}')
+                    self.status.set(tr('{count} coincidencias en la página {page}', count=len(hits), page=index+1))
                     return
             messagebox.showinfo('Buscar', 'Sin resultados. Si es un escaneo, crea primero un PDF con OCR y ábrelo.')
 
     def text_view(self):
         if self.ready():
             window = tk.Toplevel(self)
-            window.title(f'Texto · Página {self.page+1}')
+            window.title(tr('Texto · Página {page}', page=self.page+1))
             text = tk.Text(window, wrap='word', font=('Segoe UI', 12))
             text.pack(fill='both', expand=True)
-            text.insert('1.0', self.doc[self.page].get_text() or 'Esta página no tiene texto. Utiliza el OCR.')
+            text.insert('1.0', self.doc[self.page].get_text() or tr('Esta página no tiene texto. Utiliza el OCR.'))
 
     def selected(self):
         return pages_from_spec(self.ranges.get(), len(self.doc))
 
     def run_job(self, action):
         self.busy = True
-        self.status.set('Procesando…')
+        self.status.set(tr('Procesando…'))
         def worker():
             try:
                 self.events.put(('done', action()))
@@ -204,11 +238,11 @@ class MarcoPDF(tk.Tk):
             pages = self.selected()
             amount = float(self.megabytes.get().replace(',', '.')) if by_size else int(self.chunk.get())
             if amount <= 0:
-                raise ValueError('Introduce un valor mayor que cero.')
+                raise ValueError(tr('Introduce un valor mayor que cero.'))
         except ValueError as exc:
             messagebox.showerror('Revisa los datos', str(exc))
             return
-        folder = filedialog.askdirectory(title='Carpeta para los archivos divididos')
+        folder = filedialog.askdirectory(title=tr('Carpeta para los archivos divididos'))
         if not folder:
             return
         def action():
@@ -222,7 +256,7 @@ class MarcoPDF(tk.Tk):
                 import shutil
                 shutil.rmtree(target)
                 raise
-            return f'Creados {len(parts)} archivos en:\n{target}'
+            return tr('Creados {count} archivos en:\n{path}', count=len(parts), path=target)
         self.run_job(action)
 
     def ocr(self):
@@ -239,9 +273,9 @@ class MarcoPDF(tk.Tk):
         if Path(destination).resolve() == self.path.resolve():
             messagebox.showerror('Guardar', 'Elige otro nombre para conservar el original.')
             return
-        language = self.language.get()
+        language = self.ocr_languages[self.language.get()]
         def action():
-            data = ocr_document(self.doc, pages, language, lambda n: self.events.put(('progress', f'OCR: {n}/{len(pages)} páginas')))
+            data = ocr_document(self.doc, pages, language, lambda n: self.events.put(('progress', tr('OCR: {count}/{total} páginas', count=n, total=len(pages)))))
             import tempfile
             fd, temp = tempfile.mkstemp(dir=Path(destination).parent, suffix='.pdf')
             try:
@@ -251,7 +285,7 @@ class MarcoPDF(tk.Tk):
             finally:
                 if os.path.exists(temp):
                     os.unlink(temp)
-            return f'PDF con texto guardado en:\n{destination}'
+            return tr('PDF con texto guardado en:\n{path}', path=destination)
         self.run_job(action)
 
     def close(self):

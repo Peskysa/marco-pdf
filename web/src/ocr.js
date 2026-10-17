@@ -1,5 +1,6 @@
 import { createWorker } from 'tesseract.js';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
+import { t } from './i18n.js';
 
 export async function recognizeDocument(source, view, pages, language, progress) {
   const out = await PDFDocument.create();
@@ -8,7 +9,7 @@ export async function recognizeDocument(source, view, pages, language, progress)
   let worker;
   try {
     for (const [index, number] of pages.entries()) {
-      progress(`Página ${index + 1} de ${pages.length}`);
+      progress(t('Página {count} de {total}', { count: index + 1, total: pages.length }));
       const page = await view.getPage(number + 1);
       const text = await page.getTextContent();
       if (text.items.some(item => item.str?.trim())) {
@@ -23,7 +24,7 @@ export async function recognizeDocument(source, view, pages, language, progress)
         }
       });
       const viewport = page.getViewport({ scale: 200 / 72 });
-      if (viewport.width * viewport.height > 30_000_000) throw new Error('La página es demasiado grande para OCR en este dispositivo. Usa la versión de escritorio.');
+      if (viewport.width * viewport.height > 30_000_000) throw new Error(t('La página es demasiado grande para OCR en este dispositivo. Usa la versión de escritorio.'));
       const canvas = document.createElement('canvas');
       canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height);
       await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;

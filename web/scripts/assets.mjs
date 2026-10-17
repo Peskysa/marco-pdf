@@ -14,7 +14,7 @@ for (const name of await readdir(core)) {
   if (/\.wasm(\.js)?$/.test(name)) await copyFile(path.join(core, name), new URL(name, dest));
 }
 await copyFile(require.resolve('tesseract.js/dist/worker.min.js'), new URL('worker.min.js', dest));
-for (const lang of ['spa', 'eng']) {
+for (const lang of ['spa', 'eng', 'fra']) {
   const file = new URL(`${lang}.traineddata.gz`, dest);
   try { await access(file); } catch {
     let bytes;

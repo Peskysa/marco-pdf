@@ -1,13 +1,14 @@
 import { PDFDocument } from 'pdf-lib';
+import { t } from './i18n.js';
 
 export function pageRange(spec, count) {
   if (!spec.trim()) return Array.from({ length: count }, (_, i) => i);
   const result = new Set();
   for (const part of spec.split(',')) {
     const match = /^(\d+)(?:\s*-\s*(\d+))?$/.exec(part.trim());
-    if (!match) throw new Error('Usa páginas como 1-3,5,8-10.');
+    if (!match) throw new Error(t('Usa páginas como 1-3,5,8-10.'));
     const start = Number(match[1]), end = Number(match[2] || match[1]);
-    if (start < 1 || start > end || end > count) throw new Error(`Elige páginas entre 1 y ${count}.`);
+    if (start < 1 || start > end || end > count) throw new Error(t('Elige páginas entre 1 y {count}.', { count }));
     for (let i = start; i <= end; i++) result.add(i - 1);
   }
   return [...result];
@@ -21,7 +22,7 @@ export async function serialize(doc, pages) {
 
 export async function splitDocument(doc, pages, mode, amount, progress = () => {}) {
   if (!Number.isFinite(amount) || amount <= 0 || (mode === 'pages' && !Number.isInteger(amount))) {
-    throw new Error('Introduce una cantidad válida mayor que cero. Las páginas deben ser un número entero.');
+    throw new Error(t('Introduce una cantidad válida mayor que cero. Las páginas deben ser un número entero.'));
   }
   const parts = [];
   if (mode === 'pages') {
@@ -38,7 +39,7 @@ export async function splitDocument(doc, pages, mode, amount, progress = () => {
       if (candidate.length <= limit) { pending.push(page); data = candidate; }
       else {
         const single = await serialize(doc, [page]);
-        if (single.length > limit) throw new Error(`La página ${page + 1} ocupa ${(single.length / 1e6).toFixed(2)} MB y supera el límite. Aumenta el tamaño máximo.`);
+        if (single.length > limit) throw new Error(t('La página {page} ocupa {size} MB y supera el límite. Aumenta el tamaño máximo.', { page: page + 1, size: (single.length / 1e6).toFixed(2) }));
         if (pending.length) parts.push(data);
         pending = [page]; data = single;
       }

@@ -6,24 +6,25 @@ import JSZip from 'jszip';
 import { Capacitor } from '@capacitor/core';
 import { pageRange, splitDocument } from './pdf.js';
 import { recognizeDocument } from './ocr.js';
+import { t, setupLanguage } from './i18n.js';
 pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
 const $ = id => document.getElementById(id);
-let doc, view, documentLoading, filename, current = 1, zoom = 1, busy = false, rendering, results = [];
+let doc, view, documentLoading, filename, fileSize = 0, current = 1, zoom = 1, busy = false, rendering, results = [];
 const status = (text, error = false) => { $('status').textContent = text; $('status').classList.toggle('error', error); };
 function setBusy(value) {
   busy = value;
-  for (const element of document.querySelectorAll('button,input,select')) element.disabled = value || (!doc && !['file', 'file-empty', 'range', 'amount', 'mode', 'language'].includes(element.id));
+  for (const element of document.querySelectorAll('button,input,select')) element.disabled = value || (!doc && !['file', 'file-empty', 'range', 'amount', 'mode', 'language', 'ui-language'].includes(element.id));
 }
 async function task(action) {
   if (busy) return;
   setBusy(true);
-  try { await action(); } catch (error) { console.error(error); status(error.message || 'No se pudo completar la operación.', true); }
+  try { await action(); } catch (error) { console.error(error); status(t(error.message || 'No se pudo completar la operación.'), true); }
   finally { setBusy(false); }
 }
 async function open(file) {
   if (!file) return;
   await task(async () => {
-    status('Abriendo documento…');
+    status(t('Abriendo documento…'));
     const bytes = new Uint8Array(await file.arrayBuffer());
     const assets = new URL(import.meta.env.BASE_URL + 'pdfjs/', location.href).href;
     const loading = pdfjs.getDocument({ data: bytes.slice(), isEvalSupported: false,
@@ -39,15 +40,15 @@ async function open(file) {
       await loading.destroy();
       throw new Error(/password|encrypted/i.test(error.message) ? 'Este PDF está protegido. Ábrelo con contraseña en la versión de escritorio.' : 'No se pudo abrir el PDF. Comprueba que es un archivo válido.');
     }
-    filename = file.name.replace(/\.pdf$/i, ''); current = 1;
+    filename = file.name.replace(/\.pdf$/i, ''); fileSize = file.size; current = 1;
     $('filename').textContent = file.name;
-    $('details').textContent = `${doc.getPageCount()} páginas · ${(file.size / 1e6).toFixed(2)} MB`;
+    $('details').textContent = t('{count} páginas · {size} MB', { count: doc.getPageCount(), size: (fileSize / 1e6).toFixed(2) });
     $('total').textContent = `/ ${doc.getPageCount()}`;
     $('page').max = doc.getPageCount(); $('range').value = '';
     $('empty').hidden = true; $('reader').hidden = false; $('results').hidden = true;
     results = [];
     await fit();
-    status('Documento abierto · Procesamiento en tu dispositivo');
+    status(t('Documento abierto · Procesamiento en tu dispositivo'));
   });
 }
 async function render() {
@@ -61,7 +62,7 @@ async function render() {
   try { await rendering.promise; } catch (error) { if (error.name === 'RenderingCancelledException') return; throw error; }
   $('page').value = current; $('zoom').textContent = `${Math.round(zoom * 100)}%`;
   const content = await page.getTextContent();
-  $('text').textContent = content.items.map(item => item.str + (item.hasEOL ? '\n' : ' ')).join('') || 'Esta página no tiene texto. Utiliza el OCR.';
+  $('text').textContent = content.items.map(item => item.str + (item.hasEOL ? '\n' : ' ')).join('') || t('Esta página no tiene texto. Utiliza el OCR.');
 }
 async function fit() {
   const page = await view.getPage(current);
@@ -94,11 +95,11 @@ function showResults(files) {
     $('files').append(button);
   }
   if (files.length > 1) {
-    const button = document.createElement('button'); button.textContent = 'Guardar todo en ZIP';
+    const button = document.createElement('button'); button.textContent = t('Guardar todo en ZIP');
     button.onclick = () => task(async () => {
-      status('Preparando ZIP…');
+      status(t('Preparando ZIP…'));
       const zip = new JSZip(); for (const file of results) zip.file(file.name, file.bytes);
-      await save(await zip.generateAsync({ type: 'uint8array' }), `${filename}_partes.zip`, 'application/zip'); status('ZIP preparado');
+      await save(await zip.generateAsync({ type: 'uint8array' }), `${filename}_partes.zip`, 'application/zip'); status(t('ZIP preparado'));
     });
     $('files').prepend(button);
   }
@@ -108,7 +109,7 @@ $('file').onchange = event => open(event.target.files[0]);
 $('file-empty').onchange = event => open(event.target.files[0]);
 $('mode').onchange = () => {
   const size = $('mode').value === 'size'; $('amount').step = size ? '.1' : '1'; $('amount').min = size ? '.001' : '1';
-  $('amount').value = size ? '10' : '1'; $('unit').textContent = size ? 'MB como máximo' : 'páginas';
+  $('amount').value = size ? '10' : '1'; $('unit').textContent = t(size ? 'MB como máximo' : 'páginas');
 };
 $('prev').onclick = () => task(async () => { current = Math.max(1, current - 1); await render(); });
 $('next').onclick = () => task(async () => { current = Math.min(doc.getPageCount(), current + 1); await render(); });
@@ -119,15 +120,15 @@ $('fit').onclick = () => task(fit);
 $('toggle-text').onclick = () => { $('text').hidden = !$('text').hidden; };
 $('split').onclick = () => task(async () => {
   const pages = pageRange($('range').value, doc.getPageCount());
-  status('Dividiendo documento…'); $('results').hidden = true;
-  const parts = await splitDocument(doc, pages, $('mode').value, Number($('amount').value), n => status(`Dividiendo: ${n}/${pages.length} páginas`));
+  status(t('Dividiendo documento…')); $('results').hidden = true;
+  const parts = await splitDocument(doc, pages, $('mode').value, Number($('amount').value), n => status(t('Dividiendo: {count}/{total} páginas', { count: n, total: pages.length })));
   showResults(parts.map((bytes, index) => ({ bytes, name: `${filename}_parte_${String(index + 1).padStart(3, '0')}.pdf` })));
-  status(`${parts.length} archivos listos para guardar`);
+  status(t('{count} archivos listos para guardar', { count: parts.length }));
 });
 $('ocr').onclick = () => task(async () => {
   const pages = pageRange($('range').value, doc.getPageCount()); $('results').hidden = true;
   const bytes = await recognizeDocument(doc, view, pages, $('language').value, text => status(`OCR · ${text}`));
-  showResults([{ bytes, name: `${filename}_ocr.pdf` }]); status('PDF con texto listo. Guárdalo y ábrelo para buscar o copiar.');
+  showResults([{ bytes, name: `${filename}_ocr.pdf` }]); status(t('PDF con texto listo. Guárdalo y ábrelo para buscar o copiar.'));
 });
 $('find').onclick = () => task(async () => {
   const query = $('query').value.trim().toLocaleLowerCase(); if (!query) return;
@@ -135,13 +136,22 @@ $('find').onclick = () => task(async () => {
     const index = (current - 1 + n) % view.numPages + 1;
     const content = await (await view.getPage(index)).getTextContent();
     if (content.items.map(item => item.str).join(' ').toLocaleLowerCase().includes(query)) {
-      current = index; await render(); $('text').hidden = false; status(`Texto encontrado en la página ${index}`); return;
+      current = index; await render(); $('text').hidden = false; status(t('Texto encontrado en la página {page}', { page: index })); return;
     }
   }
-  status('Sin coincidencias. Para escaneos, genera primero el PDF con OCR.');
+  status(t('Sin coincidencias. Para escaneos, genera primero el PDF con OCR.'));
 });
 $('query').onkeydown = event => { if (event.key === 'Enter') $('find').click(); };
 document.addEventListener('dragover', event => { event.preventDefault(); document.body.classList.add('dragging'); });
 document.addEventListener('dragleave', event => { if (!event.relatedTarget) document.body.classList.remove('dragging'); });
 document.addEventListener('drop', event => { event.preventDefault(); document.body.classList.remove('dragging'); if (!busy) open(event.dataTransfer.files[0]); });
+setupLanguage(() => task(async () => {
+  $('unit').textContent = t($('mode').value === 'size' ? 'MB como máximo' : 'páginas');
+  if (doc) {
+    $('details').textContent = t('{count} páginas · {size} MB', { count: doc.getPageCount(), size: (fileSize / 1e6).toFixed(2) });
+    await render();
+    if (results.length) showResults(results);
+  }
+  status(t(doc ? 'Documento abierto · Procesamiento en tu dispositivo' : 'Listo para empezar'));
+}));
 setBusy(false);

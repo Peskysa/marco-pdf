@@ -10,6 +10,7 @@ subprocess.run([
     sys.executable, '-m', 'PyInstaller', '--noconfirm', '--clean', '--onefile',
     '--windowed', '--name', 'Marco-PDF-Portable',
     '--add-data', f'{root / "tessdata"};tessdata',
+    '--add-data', f'{root / "web" / "src" / "translations.json"};web/src',
     '--add-data', f'{root / "LICENSE"};.',
     '--add-data', f'{root / "NOTICE"};.',
     '--add-data', f'{root / "licenses"};licenses',

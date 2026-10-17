@@ -1,5 +1,14 @@
 # Historial de cambios
 
+## 1.2.0 — 17 de octubre de 2026
+
+- Seis variantes: portable, portable web sin conexión, web normal, instalador Windows, instalador Linux y Android.
+- OCR francés añadido en todas, además de español e inglés; reconocimiento individual o de los tres idiomas juntos.
+- Selector de interfaz español, inglés y francés en escritorio, web y Android.
+- Portable web de un solo EXE con servidor de lectura en localhost, sin instalación ni Internet.
+- Verificación del EXE web desde una carpeta aislada con las peticiones externas bloqueadas, cuatro modos OCR y pantalla pequeña.
+- Versiones anteriores conservadas como historial; la publicación actual incluye seis formatos principales y documentación.
+
 ## EXE portable único — 17 de octubre de 2026
 
 - Nuevo `Marco-PDF-Portable.exe` para Windows x64: un solo archivo con lector, OCR español/inglés y licencias integrados, sin instalación ni extracción manual.

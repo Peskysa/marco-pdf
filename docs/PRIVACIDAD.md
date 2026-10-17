@@ -12,6 +12,7 @@ La web privada utiliza la autenticación de ChatGPT Sites; el repositorio y las 
 
 - La web descarga JavaScript, motores PDF/OCR, fuentes e idiomas desde su alojamiento. Los PDF no se envían a un servicio OCR remoto.
 - Escritorio y Android incluyen los recursos de procesamiento.
+- El portable web también incluye todos los recursos. Su servidor de solo lectura escucha únicamente en `127.0.0.1` y no acepta subidas de PDF. El navegador hace el procesamiento, sin peticiones a Internet. El EXE deja recursos en una carpeta temporal mientras está abierto; el navegador puede conservar los modelos en su caché local. Cierra la ventana del lanzador para detener el servidor.
 - Instalar dependencias y compilar desde código requiere descargar herramientas de sus proveedores; es independiente del procesamiento de documentos.
 
 ## Almacenamiento

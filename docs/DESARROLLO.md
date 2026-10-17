@@ -27,11 +27,11 @@ powershell -ExecutionPolicy Bypass -File .\preparar.ps1
 .\.venv\Scripts\python.exe -m unittest -v
 ```
 
-El preparador instala `requirements.txt` y descarga español e inglés en `tessdata/`. Los idiomas usados por las compilaciones de GitHub también se conservan comprimidos en `web/public/ocr/`.
+El preparador instala `requirements.txt` y descarga español, inglés y francés en `tessdata/`. Los idiomas usados por las compilaciones de GitHub también se conservan comprimidos en `web/public/ocr/`.
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install pyinstaller==6.22.3
-.\.venv\Scripts\python.exe -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata;tessdata" app.py
+.\.venv\Scripts\python.exe -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata;tessdata" --add-data "web/src/translations.json;web/src" app.py
 ```
 
 Para el instalador utiliza Inno Setup 6 y `packaging/windows.iss` después de generar `dist/Marco PDF`. El flujo de publicación incluye también los documentos y licencias del proyecto.
@@ -53,14 +53,14 @@ Utiliza Python 3.12, Tkinter y un entorno gráfico. En una distribución compati
 python3 -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt pyinstaller==6.22.3
-python -c "import gzip,pathlib; p=pathlib.Path('tessdata'); p.mkdir(exist_ok=True); [(p/f'{l}.traineddata').write_bytes(gzip.decompress(pathlib.Path(f'web/public/ocr/{l}.traineddata.gz').read_bytes())) for l in ('spa','eng')]"
+python -c "import gzip,pathlib; p=pathlib.Path('tessdata'); p.mkdir(exist_ok=True); [(p/f'{l}.traineddata').write_bytes(gzip.decompress(pathlib.Path(f'web/public/ocr/{l}.traineddata.gz').read_bytes())) for l in ('spa','eng','fra')]"
 python -m unittest -v
 python app.py
-python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata:tessdata" app.py
+python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata:tessdata" --add-data "web/src/translations.json:web/src" app.py
 bash packaging/linux.sh
 ```
 
-El DEB y el portable se generan en Linux. No se consideran compilaciones cruzadas desde Windows.
+El DEB se genera en Linux. No se consideran compilaciones cruzadas desde Windows.
 
 ## Web
 
@@ -109,6 +109,17 @@ La clave de publicación y su contraseña están en secretos GitHub (`ANDROID_KE
 
 ## Publicación
 
-El flujo **Compilar Marco PDF** genera instalador y portable Windows, DEB y portable Linux, ZIP web y APK firmado. Ejecuta los controles antes de publicar y añade sumas SHA-256. Las descargas actuales están en `v1.1.0`. Para otra versión, actualiza de forma coherente el nombre de versión de los paquetes y la etiqueta de publicación del flujo; no vuelvas a crear una etiqueta existente.
+El flujo **Compilar Marco PDF** genera portable Windows, portable web Windows, instaladores Windows y Linux, ZIP web y APK firmado. Ejecuta los controles antes de publicar y añade sumas SHA-256. Las descargas actuales están en `v1.2.0`. Para otra versión, actualiza de forma coherente el nombre de versión de los paquetes y la etiqueta de publicación del flujo; no vuelvas a crear una etiqueta existente.
 
 Los cambios solo de documentación se pueden subir y adjuntar a la publicación sin recompilar las aplicaciones. Esto no sustituye los paquetes ejecutables ya publicados.
+
+## Portable web sin Internet
+
+Después de `pnpm build` en `web/`, desde la raíz del proyecto:
+
+```powershell
+.\.venv\Scripts\python.exe packaging/build_web_portable.py
+.\.venv\Scripts\python.exe packaging/check_web_portable.py dist/Marco-PDF-Web-Portable.exe
+```
+
+El EXE incluye servidor local, interfaz y los tres modelos OCR. `web_portable.py` escucha solo en `127.0.0.1` con un puerto libre y sirve recursos de lectura; no acepta subidas de PDF. La ventana permite abrir el navegador y cerrar el servidor. El modo `--serve-test informe.json` se utiliza en pruebas. `web/tests/offline.mjs` bloquea las peticiones fuera de localhost y verifica interfaz ES/EN/FR, OCR con cada idioma y los tres juntos, y pantalla pequeña.

@@ -1,6 +1,6 @@
 # Textos de licencia de terceros
 
-Estas copias conservan los textos de licencia distribuidos con las dependencias instaladas para Marco PDF 1.1.0. No sustituyen sus avisos originales ni cambian sus licencias.
+Estas copias conservan los textos de licencia distribuidos con las dependencias instaladas para Marco PDF 1.2.0. No sustituyen sus avisos originales ni cambian sus licencias.
 
 - `PyMuPDF-COPYING.txt`: texto incluido en PyMuPDF 1.28.2.
 - `Pillow-LICENSE.txt`: licencia y avisos de Pillow 13.0.0 y componentes de su distribución.

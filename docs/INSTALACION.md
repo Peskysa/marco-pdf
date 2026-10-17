@@ -1,89 +1,62 @@
-# Instalación y requisitos
+# Las seis versiones de Marco PDF 1.2
 
-[Índice](README.md) · [Manual](MANUAL.md)
+[Índice](README.md) · [Manual](MANUAL.md) · [Descargas](https://github.com/Peskysa/marco-pdf/releases/tag/v1.2.0)
 
-Descarga los archivos desde [la publicación de GitHub](https://github.com/Peskysa/marco-pdf/releases/latest). El repositorio es privado: entra con una cuenta que tenga acceso. Los paquetes incluyen las dependencias de la aplicación; no necesitas un entorno de desarrollo.
+Todas incluyen **interfaz y OCR en español, inglés y francés**. La interfaz se elige en el selector superior y el idioma del documento en OCR. Los modelos de idioma van incluidos. No necesitas instalar Python, Node.js ni Tesseract para usar las aplicaciones compiladas.
 
-## Windows
+## 1. Portable de escritorio
 
-Requisitos: Windows 10/11 de 64 bits y entorno de escritorio.
+Descarga **`Marco-PDF-Portable.exe`** para Windows 10/11 x64 y ábrelo con doble clic. Es un solo archivo, sin instalación ni extracción manual. Incluye lector, herramientas y OCR; funciona sin Internet y sin permisos de administrador.
 
-### Instalador
+Puedes llevarlo en un USB. Al arrancar despliega sus componentes en la carpeta temporal de Windows y los limpia al cerrarse normalmente. Necesita que el equipo permita ejecutar el archivo y escribir temporales. El programa no evita las restricciones de ejecución de un ordenador gestionado.
 
-1. Descarga `Marco-PDF-Windows-Instalador.exe`.
-2. Ejecútalo y sigue los pasos en español. Se instala para el usuario actual.
-3. Abre **Marco PDF** desde Inicio o desde el acceso directo.
+## 2. Portable web sin Internet
 
-Se desinstala desde las aplicaciones instaladas de Windows. El instalador no tiene firma comercial de Windows.
+Descarga **`Marco-PDF-Web-Portable.exe`** para Windows 10/11 x64 y ábrelo. Aparece una pequeña ventana y se abre tu navegador predeterminado en una dirección como `http://127.0.0.1:12345/`.
 
-### Portable
+1. Mantén abierta la ventana del lanzador.
+2. Utiliza el lector, el OCR y la división en el navegador.
+3. Guarda los resultados mediante los botones de descarga.
+4. Cuando termines, cierra la ventana del lanzador para detener el servidor local.
 
-La opción de un solo archivo es **`Marco-PDF-Portable.exe`**. Descárgala y ábrela con doble clic. No hay asistente de instalación ni necesitas extraer un ZIP, conservar una carpeta `_internal`, instalar Python o Tesseract, ni descargar idiomas.
+**No necesita Internet, instalación, Python ni un servidor instalado por separado.** El EXE contiene la web completa, sus fuentes, decodificadores y los tres modelos OCR. Solo escucha en la dirección local del equipo, no en la red ni en Internet. El puerto se elige automáticamente y puede cambiar al abrirlo de nuevo.
 
-Puedes copiar ese EXE a otra carpeta o a un USB. Al abrirse, despliega sus componentes en una carpeta temporal de Windows y los limpia al cerrarse normalmente. Por eso puede tardar unos segundos en arrancar. Necesita permiso para escribir en la carpeta temporal; no instala el programa. Los resultados se guardan donde tú elijas.
+Necesita un navegador actualizado compatible, como Edge o Chrome, y permiso para ejecutar el lanzador y utilizar localhost. Los PDF se procesan en el navegador y no se suben al servidor local. Los componentes se extraen temporalmente al arrancar, igual que en el portable de escritorio.
 
-También se mantiene la alternativa en carpeta:
+## 3. Web normal
 
-1. Descarga `Marco-PDF-Windows-Portable.zip`.
-2. Descomprime **toda la carpeta** en una ubicación donde tengas permisos.
-3. Abre `Marco PDF.exe` dentro de la carpeta `Marco PDF`.
+Abre [Marco PDF web](https://marco-pdf.peskysa.chatgpt.site) desde cualquier ordenador con un navegador compatible y conexión. Es privada: utiliza tu cuenta de ChatGPT autorizada.
 
-En la alternativa ZIP, mantén `_internal` junto al ejecutable. Para retirar el portable, elimina el EXE único o la carpeta descomprimida cuando esté cerrado. Los PDF guardados en otras carpetas se conservan.
+También se ofrece **`Marco-PDF-Web.zip`** para alojar la aplicación en otro servidor HTTP/HTTPS. No se abre directamente mediante doble clic en `index.html` y no contiene el lanzador portable. Para usar la web en un Windows sin red y sin instalar herramientas, elige la opción 2.
 
-## Linux
+Para desarrollo local con Python disponible, desde la carpeta descomprimida: `python -m http.server 8080 --bind 127.0.0.1`, y abre `http://127.0.0.1:8080`. La web alojada no incorpora PWA ni garantiza recarga sin conexión.
 
-Paquetes para x64/amd64. Se compilan en Ubuntu 22.04: requieren glibc 2.35 o posterior y bibliotecas gráficas. Usa un escritorio X11 o Wayland con XWayland.
+## 4. Instalador para Windows
 
-### Debian/Ubuntu compatibles
+Descarga **`Marco-PDF-Windows-Instalador.exe`**, ejecútalo y sigue el asistente. Requiere Windows 10/11 x64. Instala para el usuario actual sin pedir permisos de administrador y crea accesos directos.
 
-Descarga `Marco-PDF-Linux-amd64.deb` y, desde su carpeta, ejecuta:
+Se desinstala desde las aplicaciones instaladas de Windows. El instalador no tiene firma comercial de Windows. Tras descargar e instalar el paquete, lectura, división y OCR funcionan sin Internet.
+
+## 5. Instalador para Linux
+
+Descarga **`Marco-PDF-Linux-amd64.deb`**. Requiere Debian/Ubuntu compatibles, arquitectura amd64, glibc 2.35 o posterior y entorno gráfico X11 o Wayland con XWayland. Se compila en Ubuntu 22.04.
 
 ```sh
 sudo apt install ./Marco-PDF-Linux-amd64.deb
 ```
 
-Abre **Marco PDF** desde el menú o ejecuta `marco-pdf`. Para desinstalar: `sudo apt remove marco-pdf`.
+Abre **Marco PDF** desde el menú o con `marco-pdf`. Para desinstalar: `sudo apt remove marco-pdf`. La instalación usa los permisos del gestor de paquetes y puede necesitar obtener dependencias gráficas si faltan; el procesamiento posterior de PDF y OCR es local y no requiere Internet.
 
-### Portable
+## 6. Android
 
-```sh
-tar -xzf Marco-PDF-Linux-Portable.tar.gz
-./"Marco PDF/Marco PDF"
-```
+Descarga **`Marco-PDF-Android.apk`**, ábrelo y permite la instalación desde esa fuente si Android lo solicita. El OCR y la interfaz incluyen los tres idiomas y los recursos están dentro del APK.
 
-Mantén el directorio completo. Este formato no es un AppImage y conserva los requisitos de bibliotecas gráficas del sistema. No requiere instalar Python.
+El proyecto declara Android 7/API 24 como mínimo, pero también necesita Android System WebView actualizado y compatible. No se ha probado en un teléfono físico y no se publica en Google Play. El APK utiliza la misma clave propia que la versión anterior, con un número de versión superior para permitir actualizarla.
 
-## Web
+Al pulsar un resultado se abre el menú del sistema para compartir o guardar. Las copias destinadas a compartir se escriben en la caché de la aplicación. No necesita Internet para leer, dividir o realizar OCR después de instalarlo.
 
-Abre [Marco PDF web](https://marco-pdf.peskysa.chatgpt.site) en un navegador actualizado. El alojamiento es privado y solicita acceso con tu cuenta de ChatGPT.
+## Licencias, manuales y versiones anteriores
 
-Para alojarlo por tu cuenta, descomprime `Marco-PDF-Web.zip` y sirve su contenido por HTTP/HTTPS. Incluye motores, idiomas OCR y recursos PDF. No funciona abriendo `index.html` directamente con `file://`.
+`Marco-PDF-Documentacion.zip` incluye manuales, capturas y licencias. `SHA256SUMS.txt` permite verificar las descargas. El código original usa [AGPL-3.0](../LICENSE); los componentes conservan sus licencias.
 
-Para probarlo localmente, si tienes Python disponible:
-
-```sh
-# Desde la carpeta descomprimida que contiene index.html:
-python -m http.server 8080 --bind 127.0.0.1
-```
-
-Abre `http://127.0.0.1:8080`. La web no incorpora instalación PWA ni una caché completa para recargar sin conexión.
-
-## Android
-
-1. Descarga `Marco-PDF-Android.apk` en el teléfono.
-2. Ábrelo y permite instalar desde esa fuente si Android lo solicita.
-3. Abre **Marco PDF** y selecciona un documento mediante **Abrir PDF**.
-4. Para guardar resultados, pulsa el botón del archivo generado y elige una aplicación o destino en el menú del sistema.
-
-El proyecto declara Android 7/API 24 como mínimo. El motor web también requiere Android System WebView actualizado y compatible; el mínimo de Android no garantiza que todos los WebView antiguos funcionen. El APK utiliza una clave propia conservada para futuras actualizaciones. No se distribuye en Google Play y aún no se ha probado en un teléfono físico.
-
-## Uso sin conexión
-
-| Versión | Qué necesita conexión |
-| --- | --- |
-| Windows/Linux | Descargar el paquete; después, el procesamiento es local |
-| Android | Descargar el APK; después utiliza los recursos incluidos |
-| Web alojada | Cargar la página y sus recursos; no garantiza recarga sin red |
-| Web local | Acceder al servidor local mientras se utiliza |
-
-Los PDF no se suben al alojamiento para estas operaciones. [Privacidad](PRIVACIDAD.md).
+La versión 1.2 presenta estos seis formatos. Los ZIP portables de escritorio y TAR.GZ de Linux anteriores permanecen en la publicación histórica 1.1, que solo incluía OCR español e inglés.

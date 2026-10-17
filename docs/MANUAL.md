@@ -2,6 +2,12 @@
 
 [Índice](README.md) · [Instalación](INSTALACION.md) · [Dudas frecuentes](PREGUNTAS.md)
 
+## Idioma de interfaz y de OCR
+
+El selector superior cambia la interfaz entre **Español**, **English** y **Français**. El selector OCR es independiente: elige español, inglés, francés o los tres juntos. Puedes utilizar, por ejemplo, la interfaz en español y reconocer un documento francés. La combinación de tres idiomas puede tardar más que reconocer solo el idioma del documento.
+
+En el portable web, abre primero `Marco-PDF-Web-Portable.exe` y conserva su ventana abierta mientras trabajas en el navegador. Todos los idiomas y motores están incluidos y no requieren Internet.
+
 ## Abrir y leer
 
 Pulsa **Abrir PDF**. En la web también puedes arrastrar un archivo. Las flechas cambian de página; el zoom y **Ajustar**/**Ajustar ancho** adaptan la vista. Web y Android permiten escribir el número de página. En escritorio, `Ctrl+O` abre el selector.
@@ -48,7 +54,7 @@ Si una página individual supera el máximo, se detiene la división sin entrega
 ## Crear un PDF con OCR
 
 1. Abre el escaneo y selecciona páginas.
-2. Elige **Español**, **Inglés** o **Español + inglés**.
+2. Elige **Español**, **English**, **Français** o la combinación de los tres.
 3. Pulsa **Crear PDF con texto** en escritorio o **Crear PDF con OCR** en web/Android.
 4. Guarda con otro nombre y abre el resultado para buscar o copiar texto.
 

@@ -52,6 +52,15 @@ class PDFTests(unittest.TestCase):
             self.assertEqual(len(result), 2)
             self.assertIn('pagina 3', result[1].get_text())
 
+    def test_french_and_three_languages_ocr(self):
+        with pdf.open() as source, pdf.open() as scan:
+            source.new_page().insert_text((50, 100), 'Bonjour, document francais pour Marco PDF.', fontsize=26)
+            scan.new_page().insert_image(scan[0].rect, pixmap=source[0].get_pixmap(dpi=200))
+            for language in ('spa', 'eng', 'fra', 'spa+eng+fra'):
+                with self.subTest(language=language):
+                    with pdf.open('pdf', ocr_document(scan, [0], language)) as result:
+                        self.assertIn('Bonjour', result[0].get_text())
+
 
 if __name__ == '__main__':
     unittest.main()

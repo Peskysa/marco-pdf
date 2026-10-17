@@ -48,7 +48,7 @@ try {
     ctx.fillStyle = '#303d36'; ctx.font = '44px Arial';
     ctx.fillText('Este documento era una imagen.', 100, 310);
     ctx.fillText('Ahora puedes buscar y copiar su texto.', 100, 400);
-    ctx.font = '32px Arial'; ctx.fillText('OCR en español e inglés. Todo en tu dispositivo.', 100, 540);
+    ctx.font = '32px Arial'; ctx.fillText('OCR en español, inglés y francés. Todo en tu dispositivo.', 100, 540);
     ctx.fillStyle = '#758078'; ctx.fillText('Muestra ficticia sin datos personales.', 100, 820);
     return canvas.toDataURL('image/png');
   });

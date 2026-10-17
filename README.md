@@ -20,18 +20,20 @@ Abre un documento, recorre sus páginas, ajusta el zoom y busca texto. Utiliza l
 
 ## Elige dónde usarlo
 
-| Plataforma | Formatos | Para empezar |
+| Versión | Qué descargar / abrir | Internet para usarla |
 | --- | --- | --- |
-| **Windows 10/11, x64** | Instalador EXE, **EXE portable único** y ZIP portable | [Descargar para Windows](https://github.com/Peskysa/marco-pdf/releases/latest) |
-| **Linux, x64** | Paquete DEB y TAR.GZ portable | [Descargar para Linux](https://github.com/Peskysa/marco-pdf/releases/latest) |
-| **Web** | Navegador y ZIP para alojar | [Abrir la web privada](https://marco-pdf.peskysa.chatgpt.site) |
-| **Android** | APK firmado para instalación directa | [Descargar APK](https://github.com/Peskysa/marco-pdf/releases/latest) |
+| **Portable** · Windows x64 | [Marco-PDF-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Portable.exe) | No |
+| **Portable web** · Windows x64 | [Marco-PDF-Web-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Web-Portable.exe) | No: abre la aplicación en tu navegador local |
+| **Web normal** | [Abrir web privada](https://marco-pdf.peskysa.chatgpt.site) · [ZIP para alojar](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Web.zip) | Sí para la web alojada |
+| **Instalador Windows** · x64 | [Marco-PDF-Windows-Instalador.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Windows-Instalador.exe) | No tras descargarlo |
+| **Instalador Linux** · amd64 | [Marco-PDF-Linux-amd64.deb](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Linux-amd64.deb) | No para el procesamiento |
+| **Android** | [Marco-PDF-Android.apk](https://github.com/Peskysa/marco-pdf/releases/download/v1.2.0/Marco-PDF-Android.apk) | No tras descargarlo |
 
-**No necesitas Python ni Node.js para usar los paquetes compilados.** Windows, Linux y Android incluyen el motor OCR y los idiomas español e inglés. La web necesita conexión para cargar sus recursos; después procesa los PDF en el navegador. El ZIP web se sirve por HTTP/HTTPS, no se abre directamente con doble clic.
+**Las seis versiones incluyen interfaz y OCR en español, inglés y francés.** El idioma de la interfaz se elige arriba; el idioma del documento, en el apartado OCR. Puedes reconocer uno de los tres idiomas o los tres juntos.
 
-**Para abrirlo directamente sin instalar ni descomprimir**, descarga [Marco-PDF-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.1.0/Marco-PDF-Portable.exe) para Windows y haz doble clic. El lector, el motor OCR y los idiomas van dentro del archivo. Al iniciarse extrae sus componentes automáticamente en una carpeta temporal; no requiere instalarlos.
+**No necesitas instalar Python, Node.js ni Tesseract para utilizar las aplicaciones compiladas.** El portable y el portable web son ejecutables únicos: cópialos a una carpeta o USB y ábrelos. El portable web incluye todos los recursos y crea un servidor de solo lectura en `127.0.0.1`; no se conecta a un servidor de Internet. Mantén abierta su ventana mientras utilizas el navegador.
 
-Linux requiere Ubuntu 22.04 o una distribución compatible con glibc 2.35 y entorno gráfico. El proyecto Android tiene mínimo Android 7, pero necesita un WebView actualizado compatible con las bibliotecas web. El APK está compilado y firmado; no se ha probado en un teléfono físico ni está publicado en Google Play. La web y el repositorio mantienen acceso privado. [Requisitos completos](docs/INSTALACION.md).
+El instalador Windows funciona para el usuario actual, sin permisos de administrador. El DEB Linux se instala con el gestor de paquetes y requiere un entorno compatible con Ubuntu 22.04/glibc 2.35. El APK necesita WebView actualizado y no se ha probado en un teléfono físico. La web alojada y el repositorio mantienen acceso privado. [Instalación de las seis versiones](docs/INSTALACION.md).
 
 ## Lo que puedes hacer
 
@@ -40,7 +42,7 @@ Linux requiere Ubuntu 22.04 o una distribución compatible con glibc 2.35 y ento
 | Navegar por páginas y ajustar el zoom | Extraer rangos como `1-3,5,8-10` |
 | Buscar texto y ver una versión copiable | Crear un archivo cada N páginas |
 | Abrir PDF con contraseña en escritorio | Dividir por tamaño máximo real en MB |
-| OCR en español, inglés o ambos | Descargar las partes en ZIP en web/Android |
+| OCR en español, inglés, francés o los tres | Descargar las partes en ZIP en web/Android |
 
 ### Divide sin perder páginas
 
@@ -55,6 +57,12 @@ Selecciona el idioma y crea otro PDF con una capa de texto buscable. Abre el res
 <table><tr><td width="74%"><img src="docs/images/ocr.png" alt="Escaneo procesado con OCR y texto reconocido visible"></td><td width="26%"><img src="docs/images/movil.png" alt="Aplicación web en una pantalla móvil simulada de 390 píxeles"></td></tr><tr><td align="center">De imagen a texto buscable.</td><td align="center">También en pequeño.</td></tr></table>
 
 Capturas de la aplicación web real con contenido ficticio sin datos personales. La vista móvil simula un ancho de 390 píxeles; no es una captura de un teléfono Android físico. [Cómo reproducir las capturas](docs/CAPTURAS.md).
+
+## Idiomas
+
+![Interfaz francesa y OCR francés sin peticiones a Internet](docs/images/frances.png)
+
+La interfaz y el OCR son ajustes independientes: por ejemplo, puedes usar la interfaz en español para reconocer un documento francés.
 
 ## Empieza en tres pasos
 
@@ -71,7 +79,7 @@ En escritorio se elige una carpeta para las partes y un nombre para el resultado
 - [Preguntas frecuentes](docs/PREGUNTAS.md): tamaño, PDF protegidos y problemas habituales.
 - [Privacidad](docs/PRIVACIDAD.md): procesamiento y archivos guardados.
 - [Desarrollo y compilación](docs/DESARROLLO.md): arquitectura, pruebas y paquetes.
-- [Galería y capturas](docs/CAPTURAS.md), [historial](CHANGELOG.md) y [versión 1.1](docs/releases/v1.1.0.md).
+- [Galería y capturas](docs/CAPTURAS.md), [historial](CHANGELOG.md) y [versión 1.2](docs/releases/v1.2.0.md).
 - [Contribuir](CONTRIBUTING.md), [seguridad](SECURITY.md) y [terceros](THIRD_PARTY.md).
 - [Licencia explicada](docs/LICENCIA.md) y [texto íntegro de AGPL-3.0](LICENSE).
 
