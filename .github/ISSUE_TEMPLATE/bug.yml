@@ -1,0 +1,25 @@
+name: Informar de un fallo
+description: Un problema al leer, dividir o reconocer texto
+title: "[Fallo] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Versión de Marco PDF
+      placeholder: 1.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Plataforma
+      options: [Windows, Linux, Web, Android]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos y resultado
+      description: Explica cómo reproducirlo, qué esperabas y qué ocurrió. Incluye el sistema o navegador y el mensaje de error. Utiliza muestras ficticias, sin documentos personales.
+    validations:
+      required: true

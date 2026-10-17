@@ -32,14 +32,16 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata;tessdata" app.py
-          Copy-Item LICENSE,README.md -Destination 'dist/Marco PDF'
+          Copy-Item LICENSE,NOTICE,README.md,THIRD_PARTY.md,CHANGELOG.md,CONTRIBUTING.md,SECURITY.md -Destination 'dist/Marco PDF'
+          Copy-Item docs,assets,licenses -Destination 'dist/Marco PDF' -Recurse
           Compress-Archive -Path 'dist/Marco PDF' -DestinationPath dist/Marco-PDF-Windows-Portable.zip
           & 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe' packaging/windows.iss
       - name: Compilar Linux
         if: runner.os == 'Linux'
         run: |
           python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata:tessdata" app.py
-          cp LICENSE README.md 'dist/Marco PDF/'
+          cp LICENSE NOTICE README.md THIRD_PARTY.md CHANGELOG.md CONTRIBUTING.md SECURITY.md 'dist/Marco PDF/'
+          cp -R docs assets licenses 'dist/Marco PDF/'
           xvfb-run python -c 'from app import MarcoPDF; a=MarcoPDF(); a.update(); a.destroy()'
           bash packaging/linux.sh
       - uses: actions/upload-artifact@v4

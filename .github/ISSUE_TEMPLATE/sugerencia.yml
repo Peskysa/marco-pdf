@@ -1,0 +1,11 @@
+name: Proponer una mejora
+description: Una idea para Marco PDF
+title: "[Mejora] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué necesitas hacer
+      description: Describe una situación concreta y cómo te ayudaría el cambio.
+    validations:
+      required: true

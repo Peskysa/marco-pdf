@@ -1,0 +1,294 @@
+[
+  {
+    "package": "@capacitor/android",
+    "version": "8.5.3",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "@capacitor/core",
+    "version": "8.5.3",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "@capacitor/filesystem",
+    "version": "8.1.5",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "@capacitor/share",
+    "version": "8.0.3",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "@capacitor/synapse",
+    "version": "1.0.4",
+    "license": "ISC",
+    "files": [
+      "LICENSE.md"
+    ]
+  },
+  {
+    "package": "@pdf-lib/standard-fonts",
+    "version": "1.0.0",
+    "license": "MIT",
+    "files": [
+      "LICENSE.md"
+    ]
+  },
+  {
+    "package": "@pdf-lib/upng",
+    "version": "1.0.1",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "bmp-js",
+    "version": "0.1.0",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "core-util-is",
+    "version": "1.0.3",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "idb-keyval",
+    "version": "6.3.0",
+    "license": "Apache-2.0",
+    "files": [
+      "LICENCE"
+    ]
+  },
+  {
+    "package": "immediate",
+    "version": "3.0.6",
+    "license": "MIT",
+    "files": [
+      "LICENSE.txt"
+    ]
+  },
+  {
+    "package": "inherits",
+    "version": "2.0.4",
+    "license": "ISC",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "is-url",
+    "version": "1.2.4",
+    "license": "MIT",
+    "files": [
+      "LICENSE-MIT"
+    ]
+  },
+  {
+    "package": "isarray",
+    "version": "1.0.0",
+    "license": "MIT",
+    "files": []
+  },
+  {
+    "package": "jszip",
+    "version": "3.10.2",
+    "license": "(MIT OR GPL-3.0-or-later)",
+    "files": [
+      "LICENSE.markdown"
+    ]
+  },
+  {
+    "package": "lie",
+    "version": "3.3.0",
+    "license": "MIT",
+    "files": [
+      "license.md"
+    ]
+  },
+  {
+    "package": "node-fetch",
+    "version": "2.7.0",
+    "license": "MIT",
+    "files": [
+      "LICENSE.md"
+    ]
+  },
+  {
+    "package": "opencollective-postinstall",
+    "version": "2.0.3",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "pako",
+    "version": "1.0.11",
+    "license": "(MIT AND Zlib)",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "pdf-lib",
+    "version": "1.17.1",
+    "license": "MIT",
+    "files": [
+      "LICENSE.md"
+    ]
+  },
+  {
+    "package": "pdfjs-dist",
+    "version": "6.4.299",
+    "license": "Apache-2.0",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "process-nextick-args",
+    "version": "2.0.1",
+    "license": "MIT",
+    "files": [
+      "license.md"
+    ]
+  },
+  {
+    "package": "readable-stream",
+    "version": "2.3.8",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "regenerator-runtime",
+    "version": "0.13.11",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "safe-buffer",
+    "version": "5.1.2",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "setimmediate",
+    "version": "1.0.5",
+    "license": "MIT",
+    "files": [
+      "LICENSE.txt"
+    ]
+  },
+  {
+    "package": "string_decoder",
+    "version": "1.1.1",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "tesseract.js",
+    "version": "7.0.0",
+    "license": "Apache-2.0",
+    "files": [
+      "LICENSE.md"
+    ]
+  },
+  {
+    "package": "tesseract.js-core",
+    "version": "7.0.0",
+    "license": "Apache-2.0",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "tr46",
+    "version": "0.0.3",
+    "license": "MIT",
+    "files": []
+  },
+  {
+    "package": "tslib",
+    "version": "2.8.1",
+    "license": "0BSD",
+    "files": [
+      "LICENSE.txt"
+    ]
+  },
+  {
+    "package": "tslib",
+    "version": "1.14.1",
+    "license": "0BSD",
+    "files": [
+      "LICENSE.txt"
+    ]
+  },
+  {
+    "package": "util-deprecate",
+    "version": "1.0.2",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "wasm-feature-detect",
+    "version": "1.9.0",
+    "license": "Apache-2.0",
+    "files": [
+      "LICENSE"
+    ]
+  },
+  {
+    "package": "webidl-conversions",
+    "version": "3.0.1",
+    "license": "BSD-2-Clause",
+    "files": [
+      "LICENSE.md"
+    ]
+  },
+  {
+    "package": "whatwg-url",
+    "version": "5.0.0",
+    "license": "MIT",
+    "files": [
+      "LICENSE.txt"
+    ]
+  },
+  {
+    "package": "zlibjs",
+    "version": "0.3.1",
+    "license": "MIT",
+    "files": [
+      "LICENSE"
+    ]
+  }
+]

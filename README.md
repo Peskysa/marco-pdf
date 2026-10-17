@@ -1,65 +1,87 @@
-# Marco PDF
+<p align="center"><img src="assets/banner.svg" alt="Marco PDF. Lee. Reconoce. Divide. Windows, Linux, web y Android." width="100%"></p>
 
-Lector PDF con OCR para **Windows, Linux, web y Android**, en español. Procesa tus documentos en tu dispositivo.
+<p align="center">
+<a href="LICENSE"><img alt="Licencia AGPL-3.0" src="https://img.shields.io/badge/licencia-AGPL--3.0-173e40?style=flat-square"></a>
+<a href="https://github.com/Peskysa/marco-pdf/actions/workflows/release.yml"><img alt="Compilación y pruebas" src="https://github.com/Peskysa/marco-pdf/actions/workflows/release.yml/badge.svg"></a>
+<a href="https://github.com/Peskysa/marco-pdf/releases/latest"><img alt="Última versión" src="https://img.shields.io/github/v/release/Peskysa/marco-pdf?color=173e40&style=flat-square"></a>
+</p>
 
-## Descargas y versiones
+<p align="center"><strong>Tus documentos, en orden.</strong><br>Lee PDF, convierte escaneos en texto buscable y divide archivos por páginas o megas.<br>En español, con procesamiento en tu dispositivo.</p>
 
-Las descargas se publican en [GitHub Releases](https://github.com/Peskysa/marco-pdf/releases/latest).
+<p align="center"><a href="https://marco-pdf.peskysa.chatgpt.site"><strong>ABRIR MARCO PDF WEB</strong></a> · <a href="https://github.com/Peskysa/marco-pdf/releases/latest">Descargas</a> · <a href="docs/README.md">Documentación</a> · <a href="https://github.com/Peskysa/marco-pdf/issues/new/choose">Ayuda y sugerencias</a></p>
 
-| Plataforma | Formato | Cómo abrirlo |
+---
+
+## Un espacio para tus PDF
+
+Abre un documento, recorre sus páginas, ajusta el zoom y busca texto. Utiliza los rangos de la barra lateral para elegir qué páginas quieres procesar. El archivo original se conserva.
+
+![Lector de Marco PDF con un documento ficticio abierto](docs/images/lector.png)
+
+## Elige dónde usarlo
+
+| Plataforma | Formatos | Para empezar |
 | --- | --- | --- |
-| Windows 10/11 x64 | Instalador `.exe` | Ejecutar el instalador; incluye desinstalación y accesos directos |
-| Windows 10/11 x64 | Portable `.zip` | Descomprimir la carpeta completa y abrir `Marco PDF.exe` |
-| Linux x64 | `.deb` | `sudo apt install ./Marco-PDF-Linux-amd64.deb` |
-| Linux x64 | Portable `.tar.gz` | Extraer y ejecutar el archivo `Marco PDF` dentro de la carpeta |
-| Web | Web privada y `.zip` estático | [Abrir Marco PDF](https://marco-pdf.peskysa.chatgpt.site), o servir el ZIP por HTTP/HTTPS |
-| Android 7+ | APK firmado | Descargar e instalar permitiendo la instalación desde esa fuente |
+| **Windows 10/11, x64** | Instalador EXE y ZIP portable | [Descargar para Windows](https://github.com/Peskysa/marco-pdf/releases/latest) |
+| **Linux, x64** | Paquete DEB y TAR.GZ portable | [Descargar para Linux](https://github.com/Peskysa/marco-pdf/releases/latest) |
+| **Web** | Navegador y ZIP para alojar | [Abrir la web privada](https://marco-pdf.peskysa.chatgpt.site) |
+| **Android** | APK firmado para instalación directa | [Descargar APK](https://github.com/Peskysa/marco-pdf/releases/latest) |
 
-Linux requiere Ubuntu 22.04 o posterior, o una distribución compatible con glibc 2.35 y escritorio X11/Wayland con XWayland. Android necesita Android System WebView actualizado. La app Android es de instalación directa y no está publicada en Google Play. Las versiones de escritorio y Android incluyen los idiomas OCR y funcionan sin conexión. La web necesita conexión para cargar la aplicación; los PDF no se envían a servidores. La web alojada es privada, accesible con tu cuenta de ChatGPT.
+**No necesitas Python ni Node.js para usar los paquetes compilados.** Windows, Linux y Android incluyen el motor OCR y los idiomas español e inglés. La web necesita conexión para cargar sus recursos; después procesa los PDF en el navegador. El ZIP web se sirve por HTTP/HTTPS, no se abre directamente con doble clic.
 
-## Funciones
+Linux requiere Ubuntu 22.04 o una distribución compatible con glibc 2.35 y entorno gráfico. El proyecto Android tiene mínimo Android 7, pero necesita un WebView actualizado compatible con las bibliotecas web. El APK está compilado y firmado; no se ha probado en un teléfono físico ni está publicado en Google Play. La web y el repositorio mantienen acceso privado. [Requisitos completos](docs/INSTALACION.md).
 
-- Lectura con zoom, ajuste de ancho, navegación y búsqueda de texto.
-- Vista de texto seleccionable y copiable de la página actual.
-- OCR español e inglés: genera otro PDF con texto buscable a partir de páginas escaneadas.
-- Extraer rangos como `1-3,5,8-10` (vacío significa todas las páginas).
-- Dividir cada N páginas o por tamaño máximo real en MB decimales.
-- Si una página individual supera el límite, muestra un error sin crear resultados parciales.
-- Abrir PDF protegidos mediante su contraseña.
+## Lo que puedes hacer
 
-Los PDF protegidos con contraseña se abren en las versiones de escritorio. La web y Android muestran una indicación para usar escritorio. En Android, los resultados se guardan o comparten mediante el selector del sistema. Web/Android permiten descargar todos los fragmentos juntos en ZIP. El OCR web crea una capa de texto latino buscable: los caracteres fuera de Windows-1252 se sustituyen por `?`.
+| Leer y encontrar | Preparar y compartir |
+| --- | --- |
+| Navegar por páginas y ajustar el zoom | Extraer rangos como `1-3,5,8-10` |
+| Buscar texto y ver una versión copiable | Crear un archivo cada N páginas |
+| Abrir PDF con contraseña en escritorio | Dividir por tamaño máximo real en MB |
+| OCR en español, inglés o ambos | Descargar las partes en ZIP en web/Android |
 
-## Usar la versión portable
+### Divide sin perder páginas
 
-Descarga el ZIP de la publicación de GitHub, descomprímelo completo y abre `Marco PDF.exe`. No requiere Python ni instalar Tesseract: incluye los idiomas español e inglés.
+Selecciona un número de páginas o un límite de megas. Marco PDF comprueba el tamaño del PDF resultante antes de aceptarlo. Si una página individual supera el límite, muestra un aviso para aumentarlo; no corta una página por la mitad ni reduce su calidad para forzar el tamaño.
 
-## Ejecutar desde código
+![División real de un documento de cuatro páginas en dos archivos](docs/images/division.png)
 
-Instala Python 3.12 para Windows y ejecuta `preparar.ps1`. Después abre `iniciar.bat`.
+### Haz que tus escaneos tengan texto
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\preparar.ps1
-```
+Selecciona el idioma y crea otro PDF con una capa de texto buscable. Abre el resultado para buscar y copiar su contenido. El OCR trabaja sobre las páginas que no tienen texto; las que ya lo tienen se conservan.
 
-## Uso
+<table><tr><td width="74%"><img src="docs/images/ocr.png" alt="Escaneo procesado con OCR y texto reconocido visible"></td><td width="26%"><img src="docs/images/movil.png" alt="Aplicación web en una pantalla móvil simulada de 390 píxeles"></td></tr><tr><td align="center">De imagen a texto buscable.</td><td align="center">También en pequeño.</td></tr></table>
 
-Abre un PDF. En la barra lateral, selecciona las páginas y el tipo de división. Los resultados se guardan en una nueva subcarpeta de la carpeta elegida, sin reemplazar archivos existentes. Para OCR, selecciona el idioma y pulsa **Crear PDF con texto**; después abre el resultado para buscar o copiar el texto reconocido.
+Capturas de la aplicación web real con contenido ficticio sin datos personales. La vista móvil simula un ancho de 390 píxeles; no es una captura de un teléfono Android físico. [Cómo reproducir las capturas](docs/CAPTURAS.md).
 
-El OCR rasteriza las páginas sin texto a 200 ppp. Las que ya tienen texto se conservan sin OCR adicional. La calidad depende del escaneo; revisa el texto reconocido. El OCR no recupera texto de imágenes dentro de páginas que ya contienen texto. La división conserva páginas completas y no reduce la calidad para forzar un tamaño. Los documentos grandes pueden tardar y requerir memoria; durante una operación espera a que termine. Las firmas digitales y marcadores originales no se conservan en los documentos derivados. Los originales no se modifican.
+## Empieza en tres pasos
 
-## Desarrollo y pruebas
+1. Pulsa **Abrir PDF** o arrastra un documento a la web.
+2. Deja el campo de páginas vacío para usar todas, o escribe un rango como `2-5,8`.
+3. Elige **Dividir PDF** o **Crear PDF con OCR** y guarda el resultado.
 
-```powershell
-.\.venv\Scripts\python.exe -m unittest -v
-.\.venv\Scripts\python.exe -m pip install pyinstaller==6.22.3
-.\.venv\Scripts\python.exe -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata;tessdata" app.py
-```
+En escritorio se elige una carpeta para las partes y un nombre para el resultado OCR. En web aparecen botones de descarga; en Android se abre el menú del sistema para guardar o compartir. [Manual con ejemplos](docs/MANUAL.md).
 
-Motor PDF: [PyMuPDF](https://pymupdf.readthedocs.io/en/latest/). OCR: [Tesseract tessdata_fast](https://github.com/tesseract-ocr/tessdata_fast), datos bajo Apache 2.0. PyMuPDF y este programa se distribuyen bajo AGPL-3.0; consulta `LICENSE`.
+## Documentación
 
-## Web y Android
+- [Instalación y requisitos](docs/INSTALACION.md): Windows, Linux, portable, web y Android.
+- [Manual](docs/MANUAL.md): lectura, OCR, rangos y división por páginas o megas.
+- [Preguntas frecuentes](docs/PREGUNTAS.md): tamaño, PDF protegidos y problemas habituales.
+- [Privacidad](docs/PRIVACIDAD.md): procesamiento y archivos guardados.
+- [Desarrollo y compilación](docs/DESARROLLO.md): arquitectura, pruebas y paquetes.
+- [Galería y capturas](docs/CAPTURAS.md), [historial](CHANGELOG.md) y [versión 1.1](docs/releases/v1.1.0.md).
+- [Contribuir](CONTRIBUTING.md), [seguridad](SECURITY.md) y [terceros](THIRD_PARTY.md).
+- [Licencia explicada](docs/LICENCIA.md) y [texto íntegro de AGPL-3.0](LICENSE).
 
-Requieren Node.js 24 y pnpm 11.25.0:
+## Alcance y limitaciones
+
+El OCR no es perfecto: depende de la resolución, la orientación y la calidad del escaneo. Revisa el texto antes de utilizarlo. Las páginas mixtas que ya contienen texto no reciben OCR adicional en sus imágenes. La versión web usa una capa de texto latino; sustituye por `?` los caracteres que su fuente no puede representar.
+
+Los documentos derivados no conservan las firmas digitales ni los marcadores originales. No es un editor de contenido, un compresor ni una herramienta de firma. Los archivos grandes pueden consumir bastante memoria. Los PDF con contraseña se abren únicamente en escritorio. [Diferencias entre plataformas](docs/MANUAL.md).
+
+## Para desarrollar
+
+Escritorio usa Python 3.12, PyMuPDF, Pillow y Tkinter. Web y Android comparten PDF.js, pdf-lib y Tesseract.js; Android utiliza Capacitor.
 
 ```sh
 cd web
@@ -69,6 +91,10 @@ pnpm build
 pnpm dev
 ```
 
-La carpeta `web/dist` es la web estática completa con motores OCR e idiomas incluidos. No se abre directamente con doble clic en `index.html`: necesita un servidor HTTP/HTTPS. Para desarrollo Android instala JDK 21 y SDK Android 36, ejecuta `pnpm android:sync` y abre `web/android` en Android Studio. La compilación de publicación utiliza una clave privada guardada en secretos GitHub, nunca en el repositorio; también hay una copia de seguridad local en `.signing/`, que debes custodiar junto a su contraseña. Para compilar localmente usa `ANDROID_KEY_PASSWORD` y coloca la clave en `web/android/app/marco-pdf.p12`, o utiliza `./gradlew assembleDebug` para pruebas.
+Se necesitan Node.js 24 y pnpm 11.25.0. Las compilaciones de GitHub ejecutan pruebas de división por páginas y bytes, OCR real y un recorrido del navegador. [Instrucciones completas](docs/DESARROLLO.md).
 
-El flujo **Compilar Marco PDF** en GitHub Actions prueba el motor PDF, ejecuta OCR real en navegador y genera todos los paquetes. La publicación se realiza solo cuando las compilaciones de las tres tareas terminan correctamente. No se ha probado en un teléfono Android físico. Consulta [THIRD_PARTY.md](THIRD_PARTY.md) para los componentes y licencias.
+## Licencia y autoría
+
+Creado por **Marco Pescador**. Código e identidad visual originales bajo [GNU AGPL versión 3](LICENSE). Puedes usar, estudiar, modificar y redistribuir el programa cumpliendo esa licencia. Los componentes de terceros conservan sus licencias.
+
+Se mantiene AGPL-3.0 porque el motor de escritorio PyMuPDF se utiliza bajo su opción AGPL. [Licencia y fuentes oficiales](docs/LICENCIA.md).

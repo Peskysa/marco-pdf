@@ -3,11 +3,14 @@
   "version": "1.1.0",
   "private": true,
   "type": "module",
+  "author": "Marco Pescador",
+  "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "node scripts/assets.mjs && vite build",
     "test": "node --test tests/*.test.mjs",
     "test:browser": "node tests/browser.mjs",
+    "screenshots": "node scripts/screenshots.mjs",
     "android:init": "cap add android",
     "android:sync": "cap sync android"
   },

@@ -1,0 +1,25 @@
+# Privacidad
+
+[Índice](README.md)
+
+## Procesamiento
+
+La lectura, la división y el OCR se realizan en el dispositivo. La aplicación no implementa subidas de documentos a un servidor, cuentas propias, anuncios ni analítica.
+
+La web privada utiliza la autenticación de ChatGPT Sites; el repositorio y las descargas privadas utilizan GitHub. Esos servicios gestionan sus accesos y registros de acuerdo con sus políticas.
+
+## Conexiones
+
+- La web descarga JavaScript, motores PDF/OCR, fuentes e idiomas desde su alojamiento. Los PDF no se envían a un servicio OCR remoto.
+- Escritorio y Android incluyen los recursos de procesamiento.
+- Instalar dependencias y compilar desde código requiere descargar herramientas de sus proveedores; es independiente del procesamiento de documentos.
+
+## Almacenamiento
+
+- **Escritorio:** los resultados se guardan donde elijas. El procesamiento utiliza memoria; el guardado OCR escribe un temporal junto al destino antes de reemplazarlo.
+- **Web:** el navegador puede conservar recursos y modelos OCR en caché/IndexedDB. La aplicación no guarda automáticamente los PDF en un historial propio. Los resultados permanecen en memoria hasta cerrar o recargar; las descargas quedan en la ubicación del navegador.
+- **Android:** al compartir se escribe una copia en la caché privada de la aplicación y se comparte su URI. Esa copia puede permanecer hasta que Android o el usuario limpie la caché. El destino elegido puede conservar otra copia.
+
+## Compartir y pedir ayuda
+
+El tratamiento posterior de un PDF enviado a otra aplicación depende de ese destino. Para soporte usa documentos ficticios o anonimizados. Las capturas del repositorio contienen ejemplos preparados para la documentación, sin documentos personales del autor.
