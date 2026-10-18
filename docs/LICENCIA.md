@@ -6,6 +6,6 @@ Puedes usar, estudiar, modificar y redistribuir el programa conforme a esa licen
 
 El motor PyMuPDF se conserva bajo su opción AGPL.
 
-Cada nueva publicación adjunta `Marco-PDF-Source.zip` con el código del mismo commit que los binarios, además de instrucciones y versiones de dependencias. La fuente está también en [marco-pdf](https://github.com/Peskysa/marco-pdf). El acceso privado del repositorio no elimina las obligaciones de proporcionar fuentes a sus destinatarios. Las claves de firma y contraseñas no forman parte del código distribuible.
+Cada nueva publicación adjunta `Marco-PDF-Source.zip` con el código del mismo commit que los binarios, además de instrucciones y versiones de dependencias. La fuente está también en [marco-pdf](https://github.com/Peskysa/marco-pdf). El repositorio, el código y las descargas son públicos; no se necesita una cuenta de GitHub para consultarlos. Las claves de firma y contraseñas no forman parte del código distribuible.
 
 La licencia del código original es común a la colección; no se cambia la licencia de bibliotecas ajenas ni se revocan permisos de ediciones anteriores.
