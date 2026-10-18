@@ -1,10 +1,10 @@
-name: Compilar Marco PDF
+name: Compilar y publicar colección
 on:
-  workflow_dispatch:
   push:
     tags: ['v*']
+  workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
   web:
     runs-on: ubuntu-latest
@@ -13,6 +13,9 @@ jobs:
         working-directory: web
     steps:
       - uses: actions/checkout@v4
+      - name: Verificar estándar de colección
+        run: python scripts/distribution.py check
+        working-directory: .
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -79,10 +82,10 @@ jobs:
           Copy-Item LICENSE,NOTICE,README.md,THIRD_PARTY.md,CHANGELOG.md,CONTRIBUTING.md,SECURITY.md -Destination 'dist/Marco PDF'
           Copy-Item docs,assets,licenses -Destination 'dist/Marco PDF' -Recurse
           & 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe' packaging/windows.iss
-          if ($LASTEXITCODE -ne 0) { throw 'Falló el instalador Windows.' }
+          if ($LASTEXITCODE -ne 0) { throw 'FallÃ³ el instalador Windows.' }
           python packaging/build_portable.py
           $check = Start-Process -FilePath (Resolve-Path dist/Marco-PDF-Portable.exe) -ArgumentList '--self-test', (Join-Path $PWD 'portable-report.json') -WindowStyle Hidden -Wait -PassThru
-          if ($check.ExitCode -ne 0) { throw 'Falló el EXE portable.' }
+          if ($check.ExitCode -ne 0) { throw 'FallÃ³ el EXE portable.' }
           Get-Content portable-report.json
           python packaging/build_web_portable.py
           python packaging/check_web_portable.py dist/Marco-PDF-Web-Portable.exe
@@ -92,7 +95,7 @@ jobs:
           python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata:tessdata" --add-data "web/src/translations.json:web/src" app.py
           cp LICENSE NOTICE README.md THIRD_PARTY.md CHANGELOG.md CONTRIBUTING.md SECURITY.md 'dist/Marco PDF/'
           cp -R docs assets licenses 'dist/Marco PDF/'
-          xvfb-run python -c 'from app import MarcoPDF; a=MarcoPDF(); a.update(); a.ui_language.set("Français"); a.change_language(); a.destroy()'
+          xvfb-run python -c 'from app import MarcoPDF; a=MarcoPDF(); a.update(); a.ui_language.set("FranÃ§ais"); a.change_language(); a.destroy()'
           bash packaging/linux.sh
       - uses: actions/upload-artifact@v4
         with:
@@ -102,6 +105,7 @@ jobs:
             dist/Marco-PDF-Web-Portable.exe
             dist/Marco-PDF-Windows-Instalador.exe
             dist/Marco-PDF-Linux-amd64.deb
+            dist/Marco-PDF-Linux-Portable.tar.gz
           if-no-files-found: error
   android:
     needs: web
@@ -142,6 +146,7 @@ jobs:
           cd android
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose app/build/outputs/apk/release/app-release.apk
           cp app/build/outputs/apk/release/app-release.apk ../../Marco-PDF-Android.apk
       - uses: actions/upload-artifact@v4
         with:
@@ -150,6 +155,8 @@ jobs:
   publish:
     needs: [web, desktop, android]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -157,15 +164,17 @@ jobs:
           pattern: final-*
           path: artifacts
           merge-multiple: true
-      - name: Documentación, seis formatos y sumas
-        run: |
-          python packaging/docs.py
-          cp dist/Marco-PDF-Documentacion.zip artifacts/
-          for file in Marco-PDF-Portable.exe Marco-PDF-Web-Portable.exe Marco-PDF-Web.zip Marco-PDF-Windows-Instalador.exe Marco-PDF-Linux-amd64.deb Marco-PDF-Android.apk; do test -s "artifacts/$file"; done
-          (cd artifacts && sha256sum *) > SHA256SUMS.txt
-          mv SHA256SUMS.txt artifacts/
-      - name: Publicar versión 1.2
+      - name: Verificar nueve paquetes, documentación, fuente y sumas
+        run: python scripts/distribution.py finalize artifacts
+      - name: Publicar solo después de todas las comprobaciones
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: gh release create v1.2.0 artifacts/* --target "${{ github.sha }}" --title "Marco PDF 1.2 · Seis versiones · ES / EN / FR" --notes-file docs/releases/github-v1.2.0.md
+        shell: bash
+        run: |
+          version="$(python -c 'import json; print(json.load(open("project.json"))["version"])')"
+          name="$(python -c 'import json; print(json.load(open("project.json"))["name"])')"
+          tag="v$version"
+          if [ "$GITHUB_REF_TYPE" = tag ] && [ "$GITHUB_REF_NAME" != "$tag" ]; then echo 'Etiqueta y versión no coinciden'; exit 1; fi
+          gh release create "$tag" artifacts/* --draft --target "$GITHUB_SHA" --title "$name $version" --notes-file "docs/releases/$tag.md"
+          gh release edit "$tag" --draft=false --latest

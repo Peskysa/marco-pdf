@@ -1,0 +1,16 @@
+{
+  "slug": "marco-pdf",
+  "name": "Marco PDF",
+  "prefix": "Marco-PDF",
+  "version": "1.3.0",
+  "web": "https://marco-pdf.peskysa.chatgpt.site",
+  "license": "AGPL-3.0-only",
+  "modalities": [
+    "linux",
+    "windows",
+    "portable",
+    "web",
+    "android"
+  ],
+  "package": "web/package.json"
+}

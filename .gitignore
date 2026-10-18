@@ -15,3 +15,9 @@ web/public/pdfjs/
 *.jks
 .signing/
 portable-report.json
+
+web/public/Source.zip
+web/public/LICENSE
+web/public/NOTICE
+web/public/THIRD_PARTY.md
+web/public/MANUAL.md

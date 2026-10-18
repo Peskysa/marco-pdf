@@ -27,3 +27,10 @@ for (const lang of ['spa', 'eng', 'fra']) {
     await writeFile(file, gzipSync(bytes));
   }
 }
+
+const { execFileSync } = await import('node:child_process');
+const { fileURLToPath } = await import('node:url');
+const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
+execFileSync('git', ['archive','--format=zip','--prefix=marco-pdf/','--output=web/public/Source.zip','HEAD'], {cwd:projectRoot});
+for (const file of ['LICENSE','NOTICE','THIRD_PARTY.md']) await copyFile(new URL('../../'+file,import.meta.url),new URL('../public/'+file,import.meta.url));
+await copyFile(new URL('../../docs/MANUAL.md',import.meta.url),new URL('../public/MANUAL.md',import.meta.url));

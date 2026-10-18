@@ -1,27 +1,11 @@
 # Licencia y autoría
 
-[Índice](README.md) · [Texto completo](../LICENSE) · [Terceros](../THIRD_PARTY.md)
+Copyright © 2026 Marco Pescador. El código y los recursos originales de Marco PDF desde la versión 1.3.0 se publican bajo **GNU AGPL versión 3 exclusivamente** (`AGPL-3.0-only`). El texto normativo está en [LICENSE](../LICENSE), sin garantía. Los componentes externos conservan sus licencias y avisos en [THIRD_PARTY.md](../THIRD_PARTY.md) y `licenses/`.
 
-**Marco PDF — Copyright © 2026 Marco Pescador.** El código y los elementos visuales originales del proyecto se ofrecen bajo **GNU Affero General Public License, versión 3** (`AGPL-3.0-only`). El documento normativo es el archivo [LICENSE](../LICENSE).
+Puedes usar, estudiar, modificar y redistribuir el programa conforme a esa licencia. Debes conservar los avisos y proporcionar el código fuente correspondiente cuando proceda. Las versiones modificadas utilizadas a través de una red están sujetas también a la sección 13. [Texto oficial](https://www.gnu.org/licenses/agpl-3.0.html).
 
-## Qué permite
+El motor PyMuPDF se conserva bajo su opción AGPL.
 
-Puedes utilizar el programa, estudiar su código, modificarlo y redistribuirlo conforme a AGPL-3.0. La licencia no ofrece garantía. La redistribución requiere respetar sus condiciones, incluidos los avisos y el acceso al código fuente correspondiente. La sección 13 añade condiciones para versiones modificadas con interacción a través de una red; consulta el texto completo para el supuesto concreto.
+Cada nueva publicación adjunta `Marco-PDF-Source.zip` con el código del mismo commit que los binarios, además de instrucciones y versiones de dependencias. La fuente está también en [marco-pdf](https://github.com/Peskysa/marco-pdf). El acceso privado del repositorio no elimina las obligaciones de proporcionar fuentes a sus destinatarios. Las claves de firma y contraseñas no forman parte del código distribuible.
 
-Esta explicación es un resumen del proyecto y no sustituye la licencia. Fuentes: [licencias GNU](https://www.gnu.org/licenses/licenses.html.en), [uso de las licencias GNU](https://www.gnu.org/licenses/gpl-howto.en.html) y [AGPL versión 3](https://www.gnu.org/licenses/agpl-3.0.html).
-
-## Por qué esta licencia
-
-El escritorio utiliza **PyMuPDF/MuPDF** bajo su alternativa AGPL. El proveedor también ofrece licencias comerciales por separado; Marco PDF no incorpora una licencia comercial. [Información oficial de PyMuPDF](https://pymupdf.readthedocs.io/en/latest/faq/index.html) y [su repositorio](https://github.com/pymupdf/PyMuPDF).
-
-El ajedrez de referencia utiliza MIT. Este proyecto mantiene AGPL-3.0 por su composición y no reutiliza la licencia MIT del ajedrez.
-
-## Componentes e imágenes
-
-Los componentes externos conservan sus titulares y licencias; se documentan en [THIRD_PARTY.md](../THIRD_PARTY.md). Las copias de textos de licencia están en [licenses/](../licenses/README.md).
-
-El banner y las capturas de esta documentación son materiales originales de Marco PDF y se distribuyen bajo la misma licencia del proyecto. Las capturas contienen ejemplos ficticios; los logotipos o marcas de terceros siguen perteneciendo a sus titulares.
-
-## Acceso al código
-
-El código está en [Peskysa/marco-pdf](https://github.com/Peskysa/marco-pdf), que actualmente es privado. La licencia no cambia la configuración de visibilidad de GitHub. Los destinatarios de una distribución deben poder acceder al código correspondiente conforme a la licencia; las contraseñas y claves de firma no forman parte de ese código distribuible.
+La licencia del código original es común a la colección; no se cambia la licencia de bibliotecas ajenas ni se revocan permisos de ediciones anteriores.

@@ -2,7 +2,7 @@
 [Setup]
 AppId={{1CD837DC-06B5-4D1D-9E4B-4CED340AE041}
 AppName={#AppName}
-AppVersion=1.2.0
+AppVersion=1.3.0
 AppPublisher=Marco Pescador
 DefaultDirName={localappdata}\Programs\Marco PDF
 DefaultGroupName=Marco PDF
@@ -13,6 +13,7 @@ Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
 UninstallDisplayIcon={app}\Marco PDF.exe
+LicenseFile=..\LICENSE
 [Languages]
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 [Files]
