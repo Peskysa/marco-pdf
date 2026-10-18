@@ -2,7 +2,7 @@
 
 [Portada](../README.md) · [Instalación](INSTALACION.md) · [Licencia](LICENCIA.md)
 
-Versión **1.3.0**. Los cinco destinos obligatorios de la colección son Linux, Windows, portable, web y Android. Portable es una forma de distribución; se entrega para Windows y Linux.
+Versión **1.3.1**. Los cinco destinos obligatorios de la colección son Linux, Windows, portable, web y Android. Portable es una forma de distribución; se entrega para Windows y Linux.
 
 | Archivo | Modalidad | Requisitos |
 | --- | --- | --- |

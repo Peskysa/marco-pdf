@@ -16,7 +16,7 @@ MimeType=application/pdf;
 EOF
 cat > build/deb/DEBIAN/control <<'EOF'
 Package: marco-pdf
-Version: 1.3.0
+Version: 1.3.1
 Architecture: amd64
 Maintainer: Marco Pescador <101880444+Peskysa@users.noreply.github.com>
 Depends: libc6 (>= 2.35), libx11-6, libxext6, libxrender1, libxft2

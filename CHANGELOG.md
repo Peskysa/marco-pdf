@@ -1,44 +1,48 @@
 # Historial
 
+## 1.3.1 — 18 de octubre de 2026
+
+Corrige la codificación UTF-8 de la comprobación francesa en Linux y del historial. La compilación incompleta 1.3.0 no se publicó como Release.
+
 ## 1.3.0 — 18 de octubre de 2026
 
 Estructura común de colección, AGPL-3.0-only para código original, nueve paquetes completos, Android firmado y verificación de distribución. Véanse [notas](docs/releases/v1.3.0.md).
 
 de cambios
 
-## 1.2.0 â€” 17 de octubre de 2026
+## 1.2.0 — 17 de octubre de 2026
 
-- Seis variantes: portable, portable web sin conexiÃ³n, web normal, instalador Windows, instalador Linux y Android.
-- OCR francÃ©s aÃ±adido en todas, ademÃ¡s de espaÃ±ol e inglÃ©s; reconocimiento individual o de los tres idiomas juntos.
-- Selector de interfaz espaÃ±ol, inglÃ©s y francÃ©s en escritorio, web y Android.
-- Portable web de un solo EXE con servidor de lectura en localhost, sin instalaciÃ³n ni Internet.
-- VerificaciÃ³n del EXE web desde una carpeta aislada con las peticiones externas bloqueadas, cuatro modos OCR y pantalla pequeÃ±a.
-- Versiones anteriores conservadas como historial; la publicaciÃ³n actual incluye seis formatos principales y documentaciÃ³n.
-- DocumentaciÃ³n revisada: seis capturas reales, instrucciones para reproducir tambiÃ©n la francesa y avisos de los tres idiomas OCR. Se mantiene la licencia AGPL-3.0 del proyecto.
+- Seis variantes: portable, portable web sin conexión, web normal, instalador Windows, instalador Linux y Android.
+- OCR francés añadido en todas, además de español e inglés; reconocimiento individual o de los tres idiomas juntos.
+- Selector de interfaz español, inglés y francés en escritorio, web y Android.
+- Portable web de un solo EXE con servidor de lectura en localhost, sin instalación ni Internet.
+- Verificación del EXE web desde una carpeta aislada con las peticiones externas bloqueadas, cuatro modos OCR y pantalla pequeña.
+- Versiones anteriores conservadas como historial; la publicación actual incluye seis formatos principales y documentación.
+- Documentación revisada: seis capturas reales, instrucciones para reproducir también la francesa y avisos de los tres idiomas OCR. Se mantiene la licencia AGPL-3.0 del proyecto.
 
-## EXE portable Ãºnico â€” 17 de octubre de 2026
+## EXE portable único — 17 de octubre de 2026
 
-- Nuevo `Marco-PDF-Portable.exe` para Windows x64: un solo archivo con lector, OCR espaÃ±ol/inglÃ©s y licencias integrados, sin instalaciÃ³n ni extracciÃ³n manual.
-- ComprobaciÃ³n del ejecutable compilado con renderizado, divisiÃ³n y OCR real desde una carpeta que solo contiene el EXE.
+- Nuevo `Marco-PDF-Portable.exe` para Windows x64: un solo archivo con lector, OCR español/inglés y licencias integrados, sin instalación ni extracción manual.
+- Comprobación del ejecutable compilado con renderizado, división y OCR real desde una carpeta que solo contiene el EXE.
 - Se mantiene el ZIP portable anterior como alternativa.
 
-## DocumentaciÃ³n ampliada â€” 17 de octubre de 2026
+## Documentación ampliada — 17 de octubre de 2026
 
-- Portada visual con banner, enlaces de descarga y cinco capturas reproducibles de la aplicaciÃ³n real.
-- GuÃ­as de instalaciÃ³n, uso, privacidad, preguntas frecuentes, desarrollo y licencia.
-- Aviso de autorÃ­a, textos de terceros y plantillas de ayuda.
-- DocumentaciÃ³n descargable adjunta a la versiÃ³n 1.1.0. Esta actualizaciÃ³n no cambia el comportamiento de las aplicaciones publicadas.
+- Portada visual con banner, enlaces de descarga y cinco capturas reproducibles de la aplicación real.
+- Guías de instalación, uso, privacidad, preguntas frecuentes, desarrollo y licencia.
+- Aviso de autoría, textos de terceros y plantillas de ayuda.
+- Documentación descargable adjunta a la versión 1.1.0. Esta actualización no cambia el comportamiento de las aplicaciones publicadas.
 
-## 1.1.0 â€” 17 de octubre de 2026
+## 1.1.0 — 17 de octubre de 2026
 
 - Instalador y portable Windows x64; DEB y portable Linux x64.
-- AplicaciÃ³n web y APK Android firmado para instalaciÃ³n directa.
-- OCR local en espaÃ±ol e inglÃ©s; capas de texto para pÃ¡ginas escaneadas.
-- DivisiÃ³n por nÃºmero de pÃ¡ginas o tamaÃ±o mÃ¡ximo de archivo comprobado en bytes.
-- Rangos de pÃ¡ginas, zoom, bÃºsqueda y vista de texto.
+- Aplicación web y APK Android firmado para instalación directa.
+- OCR local en español e inglés; capas de texto para páginas escaneadas.
+- División por número de páginas o tamaño máximo de archivo comprobado en bytes.
+- Rangos de páginas, zoom, búsqueda y vista de texto.
 - Recursos locales de OCR y decodificadores/fuentes PDF en web/Android.
-- Compilaciones y pruebas automatizadas en GitHub; publicaciÃ³n de sumas SHA-256.
+- Compilaciones y pruebas automatizadas en GitHub; publicación de sumas SHA-256.
 
-## Primera implementaciÃ³n de escritorio â€” 17 de octubre de 2026
+## Primera implementación de escritorio — 17 de octubre de 2026
 
-- Lector Windows con OCR y herramientas de divisiÃ³n, base de la versiÃ³n multiplataforma.
+- Lector Windows con OCR y herramientas de división, base de la versión multiplataforma.

@@ -16,11 +16,11 @@ Lee PDF, reconoce texto mediante OCR y divide documentos por páginas o tamaño 
 
 | Modalidad | Descarga | Uso |
 | --- | --- | --- |
-| **Linux** | [Marco-PDF-Linux-amd64.deb](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.0/Marco-PDF-Linux-amd64.deb) | Instalador DEB para amd64; también portable TAR.GZ. |
-| **Windows** | [Marco-PDF-Windows-Instalador.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.0/Marco-PDF-Windows-Instalador.exe) | Instalador para el usuario actual, x64. |
-| **Portable** | [Marco-PDF-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.0/Marco-PDF-Portable.exe) | Un EXE Windows sin instalar; también web portable y Linux portable. |
-| **Web** | [Marco-PDF-Web.zip](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.0/Marco-PDF-Web.zip) | ZIP autónomo para navegador o alojamiento HTTPS. |
-| **Android** | [Marco-PDF-Android.apk](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.0/Marco-PDF-Android.apk) | APK de publicación firmado con clave propia del proyecto. |
+| **Linux** | [Marco-PDF-Linux-amd64.deb](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.1/Marco-PDF-Linux-amd64.deb) | Instalador DEB para amd64; también portable TAR.GZ. |
+| **Windows** | [Marco-PDF-Windows-Instalador.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.1/Marco-PDF-Windows-Instalador.exe) | Instalador para el usuario actual, x64. |
+| **Portable** | [Marco-PDF-Portable.exe](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.1/Marco-PDF-Portable.exe) | Un EXE Windows sin instalar; también web portable y Linux portable. |
+| **Web** | [Marco-PDF-Web.zip](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.1/Marco-PDF-Web.zip) | ZIP autónomo para navegador o alojamiento HTTPS. |
+| **Android** | [Marco-PDF-Android.apk](https://github.com/Peskysa/marco-pdf/releases/download/v1.3.1/Marco-PDF-Android.apk) | APK de publicación firmado con clave propia del proyecto. |
 
 Todas las variantes incluyen la aplicación y sus recursos. No necesitas instalar Python ni Node.js para utilizar los paquetes compilados. Los portables no requieren instalación, pero siguen sujetos a los permisos de ejecución del equipo. Los ejecutables Windows no tienen firma comercial. El APK se instala directamente, fuera de Google Play; su compilación no equivale a una prueba en teléfono físico.
 

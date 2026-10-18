@@ -51,6 +51,7 @@ jobs:
   desktop:
     needs: web
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-22.04]
     runs-on: ${{ matrix.os }}
@@ -82,10 +83,10 @@ jobs:
           Copy-Item LICENSE,NOTICE,README.md,THIRD_PARTY.md,CHANGELOG.md,CONTRIBUTING.md,SECURITY.md -Destination 'dist/Marco PDF'
           Copy-Item docs,assets,licenses -Destination 'dist/Marco PDF' -Recurse
           & 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe' packaging/windows.iss
-          if ($LASTEXITCODE -ne 0) { throw 'FallÃ³ el instalador Windows.' }
+          if ($LASTEXITCODE -ne 0) { throw 'Falló el instalador Windows.' }
           python packaging/build_portable.py
           $check = Start-Process -FilePath (Resolve-Path dist/Marco-PDF-Portable.exe) -ArgumentList '--self-test', (Join-Path $PWD 'portable-report.json') -WindowStyle Hidden -Wait -PassThru
-          if ($check.ExitCode -ne 0) { throw 'FallÃ³ el EXE portable.' }
+          if ($check.ExitCode -ne 0) { throw 'Falló el EXE portable.' }
           Get-Content portable-report.json
           python packaging/build_web_portable.py
           python packaging/check_web_portable.py dist/Marco-PDF-Web-Portable.exe
@@ -95,7 +96,7 @@ jobs:
           python -m PyInstaller --noconfirm --windowed --name "Marco PDF" --add-data "tessdata:tessdata" --add-data "web/src/translations.json:web/src" app.py
           cp LICENSE NOTICE README.md THIRD_PARTY.md CHANGELOG.md CONTRIBUTING.md SECURITY.md 'dist/Marco PDF/'
           cp -R docs assets licenses 'dist/Marco PDF/'
-          xvfb-run python -c 'from app import MarcoPDF; a=MarcoPDF(); a.update(); a.ui_language.set("FranÃ§ais"); a.change_language(); a.destroy()'
+          xvfb-run python -c 'from app import MarcoPDF; a=MarcoPDF(); a.update(); a.ui_language.set("Fran\u00e7ais"); a.change_language(); a.destroy()'
           bash packaging/linux.sh
       - uses: actions/upload-artifact@v4
         with:

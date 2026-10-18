@@ -2,7 +2,7 @@
 
 [Portada](../README.md) · [Distribución y nombres de archivo](DISTRIBUCION.md)
 
-Descarga los paquetes de la versión **1.3.0** en [Releases](https://github.com/Peskysa/marco-pdf/releases/latest). No se necesita Python, Node.js ni herramientas de desarrollo para utilizarlos. Comprueba el archivo con `Get-FileHash archivo -Algorithm SHA256` en Windows o `sha256sum archivo` en Linux, comparándolo con `SHA256SUMS.txt`.
+Descarga los paquetes de la versión **1.3.1** en [Releases](https://github.com/Peskysa/marco-pdf/releases/latest). No se necesita Python, Node.js ni herramientas de desarrollo para utilizarlos. Comprueba el archivo con `Get-FileHash archivo -Algorithm SHA256` en Windows o `sha256sum archivo` en Linux, comparándolo con `SHA256SUMS.txt`.
 
 ## Windows
 
